@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Формирование площадки · КРТ Чита</title>
+  <link rel="preload" href="fonts/atlas-grotesk-regular.otf" as="font" type="font/otf" crossorigin>
+  <link rel="preload" href="fonts/atlas-grotesk-bold.otf" as="font" type="font/otf" crossorigin>
+  <link rel="icon" href="img/brand/favicon.webp" type="image/webp">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-logo-link" href="./" aria-label="КБ Стрелка: на главную">
+      <img class="site-logo" src="img/brand/kb-strelka.webp" width="720" height="71" alt="">
+    </a>
+    <nav class="site-nav" aria-label="Разделы">
+      <a class="nav-item" href="scoring.html">Скоринговая модель</a>
+      <a class="nav-item" href="formation.html" aria-current="page">Формирование площадки</a>
+    </nav>
+  </header>
+
+  <section class="intro" aria-labelledby="h-page">
+    <h1 id="h-page">Формирование многоконтурной площадки</h1>
+    <div class="intro-body">
+      <div class="intro-text">
+        <p>
+          Площадки КРТ объединяются в&nbsp;многоконтурные комбинации: одна опорная площадка и&nbsp;до&nbsp;четырёх
+          присоединённых, суммарно не&nbsp;больше 45&nbsp;га. Комбинация допустима, если её&nbsp;интегральный индекс
+          инвестиционного потенциала (средний по&nbsp;площади индекс всех площадок) строго больше&nbsp;1.
+        </p>
+        <p>
+          Рекомендуемый сценарий&nbsp;— единый набор комбинаций без повторов площадок. Сначала охвачено максимум
+          площадок, затем комбинации сделаны компактнее, после чего максимизированы расселение аварийного жилья
+          и&nbsp;новая жилая застройка при минимуме прочего сноса. Площадки больше 45&nbsp;га с&nbsp;индексом выше&nbsp;1
+          реализуются самостоятельно.
+        </p>
+      </div>
+      <ul class="rules" aria-label="Правила методики">
+        <li><strong>≤ 45 га</strong> площадь комбинации</li>
+        <li><strong>1–5</strong> площадок, одна опорная</li>
+        <li><strong>IP &gt; 1</strong> интегральный индекс</li>
+        <li><strong id="coverage">68 из 80</strong> площадок в сценарии</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="scenario-bar">
+    <div id="scenario-tabs"></div>
+    <p id="scenario-hint" class="scenario-hint"></p>
+  </div>
+
+  <main id="app" class="grid">
+    <section class="panel area-anchors" aria-labelledby="h-anchors">
+      <h2 id="h-anchors" class="panel-title panel-title--list">Выберите опорную площадку</h2>
+      <ul id="anchor-list" class="site-list" aria-labelledby="h-anchors"></ul>
+    </section>
+
+    <section class="panel area-add" aria-labelledby="h-add">
+      <h2 id="h-add" class="panel-title panel-title--list">Добавьте площадки</h2>
+      <div id="add-controls" class="add-controls"></div>
+      <ul id="add-list" class="site-list site-list--scroll" aria-labelledby="h-add" role="tabpanel"></ul>
+    </section>
+
+    <section class="panel area-scheme" aria-labelledby="h-scheme">
+      <h2 id="h-scheme" class="panel-title">Выбранная опорная площадка</h2>
+      <div id="scheme-body" class="scheme-body"></div>
+    </section>
+
+    <section id="card-top" class="panel card area-top" aria-labelledby="card-top-title"></section>
+    <section id="card-bottom" class="panel card area-bottom" aria-labelledby="card-bottom-title"></section>
+
+    <section class="panel area-legend" aria-labelledby="h-legend">
+      <h2 id="h-legend" class="panel-title">Легенда схем</h2>
+      <h3 class="legend-group">Территории, пригодные для освоения</h3>
+      <ul class="legend">
+        <li><span class="swatch swatch--free" aria-hidden="true"></span>Свободные участки</li>
+        <li><span class="swatch swatch--avar" aria-hidden="true"></span>Участки расселяемой аварийной застройки</li>
+        <li><span class="swatch swatch--redev" aria-hidden="true"></span>Участки редевелопмента</li>
+        <li><span class="swatch swatch--social" aria-hidden="true"></span>Участки объектов социальной инфраструктуры</li>
+        <li><span class="swatch swatch--kept" aria-hidden="true"></span>Участки сохраняемых существующих ОКС</li>
+      </ul>
+      <h3 class="legend-group">Территории, не подлежащие освоению</h3>
+      <ul class="legend">
+        <li><span class="swatch swatch--restricted" aria-hidden="true"></span>Участки с неснимаемыми ограничениями, полностью исключающими возможность строительства</li>
+      </ul>
+      <h3 class="legend-group">Категории площадок в плашках</h3>
+      <ul class="legend legend--letters">
+        <li><abbr class="tile-letter">Н</abbr>Нейтральная</li>
+        <li><abbr class="tile-letter">О</abbr>Обременение</li>
+        <li><abbr class="tile-letter">В</abbr>Вознаграждение</li>
+      </ul>
+    </section>
+
+    <section class="panel area-check" aria-labelledby="h-check">
+      <h2 id="h-check" class="panel-title">Проверка методики</h2>
+      <div id="check-body"></div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <footer class="page-foot">
+    <span class="confidential">Конфиденциально</span>
+    <span id="data-version"></span>
+  </footer>
+</body>
+</html>

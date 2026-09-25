@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Мастер-план КРТ · Чита</title>
+  <link rel="icon" href="img/brand/favicon.webp" type="image/webp">
+  <link rel="preload" href="fonts/atlas-grotesk-regular.otf" as="font" type="font/otf" crossorigin>
+  <link rel="preload" href="fonts/atlas-grotesk-bold.otf" as="font" type="font/otf" crossorigin>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/landing.css">
+  <script type="module" src="js/landing.js"></script>
+</head>
+<body class="landing">
+  <!-- Слои снизу вверх: волны Group (фон body), иллюстрация Main, плашки разделов -->
+  <header class="site-header site-header--glass">
+    <img class="site-logo" src="img/brand/kb-strelka.webp" width="720" height="71" alt="КБ Стрелка">
+    <nav class="site-nav" aria-label="Разделы">
+      <a class="nav-item" href="scoring.html">Скоринговая модель</a>
+      <a class="nav-item" href="formation.html">Формирование площадки</a>
+    </nav>
+    <span class="confidential header-mark">Конфиденциально</span>
+  </header>
+
+  <main class="landing-main">
+    <section class="landing-intro" aria-labelledby="h-landing">
+      <p class="landing-eyebrow">Мастер-план реализации проектов КРТ</p>
+      <h1 id="h-landing">Чита</h1>
+      <p class="landing-lead">Выберите раздел для работы.</p>
+    </section>
+
+    <ul class="sections">
+      <li>
+        <a class="glass-card" href="scoring.html">
+          <h2 class="glass-card-title">Скоринговая модель</h2>
+          <p class="glass-card-text">Оценка территории Читы на гексагональной сетке по интересам города
+            и инвестора, интегральные слои с настраиваемыми весами и рейтинг площадок КРТ.</p>
+          <span class="glass-card-cta">Перейти <span aria-hidden="true">→</span></span>
+        </a>
+      </li>
+      <li>
+        <a class="glass-card" href="formation.html">
+          <h2 class="glass-card-title">Формирование площадки</h2>
+          <p class="glass-card-text">Сборка многоконтурной площадки из опорной и присоединяемых участков,
+            проверка по методике, рекомендуемый сценарий и оптимизация выбора.</p>
+          <span class="glass-card-cta">Перейти <span aria-hidden="true">→</span></span>
+        </a>
+      </li>
+    </ul>
+  </main>
+
+  <img class="landing-art" src="img/brand/main-1280.webp"
+       srcset="img/brand/main-1280.webp 1280w, img/brand/main-2560.webp 2560w" sizes="(max-width: 767px) 90vw, 58vw"
+       width="2560" height="1430" alt="" decoding="async">
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+# HTTPS с автоматическим сертификатом Let's Encrypt для домена из KRT_DOMAIN.
+# Порты 80 и 443 сервера должны быть открыты, DNS домена — указывать на сервер.
+{$KRT_DOMAIN} {
+	encode zstd gzip
+	reverse_proxy web:8080
+	header -Server
+}

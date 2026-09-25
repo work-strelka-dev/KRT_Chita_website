@@ -1,0 +1,51 @@
+# Сайт КРТ Читы в Docker. Инструкция: docs/DEPLOY.md
+#   docker compose up -d --build                    — сайт на 127.0.0.1:8080 (за своим прокси)
+#   docker compose --profile https up -d --build    — плюс Caddy с HTTPS (Let's Encrypt)
+# Переменные — в .env рядом с этим файлом (шаблон: .env.example).
+name: krt-chita
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    image: krt-chita:latest
+    restart: unless-stopped
+    environment:
+      MAPBOX_TOKEN: ${MAPBOX_TOKEN:-}
+      MAPBOX_STYLE: ${MAPBOX_STYLE:-okamidan/cmqupgwnh000b01s41y4r8ams}
+      KRT_PUBLIC: ${KRT_PUBLIC:-0}
+    secrets:
+      - htpasswd
+    # Только с этой машины: снаружи сайт доступен через прокси
+    ports:
+      - "127.0.0.1:${KRT_PORT:-8080}:8080"
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop: [ALL]
+    security_opt:
+      - no-new-privileges:true
+
+  caddy:
+    image: caddy:2.11.4-alpine
+    profiles: [https]
+    restart: unless-stopped
+    depends_on: [web]
+    environment:
+      KRT_DOMAIN: ${KRT_DOMAIN:-}   # обязателен для профиля https: без домена Caddy не стартует
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./docker/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+
+secrets:
+  htpasswd:
+    file: ./secrets/htpasswd
+
+volumes:
+  caddy_data:
+  caddy_config:

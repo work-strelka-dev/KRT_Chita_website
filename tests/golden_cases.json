@@ -1,0 +1,2278 @@
+{
+ "version": "2026-09-25",
+ "cases": [
+  {
+   "note": "рекомендация",
+   "anchor": "1.2",
+   "additional": [
+    "14.1",
+    "13.2",
+    "12.1"
+   ],
+   "expected": {
+    "count": 4,
+    "areaHa": 43.9,
+    "ip": 1.082141230068,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 19016,
+    "gradM2": 562051,
+    "sppNewM2": 470345,
+    "sppDemolM2": 47228,
+    "deltaAvarM2": 14220,
+    "deltaSppNewM2": 192863,
+    "deltaSppDemolM2": 28529
+   }
+  },
+  {
+   "note": "рекомендация",
+   "anchor": "2.1",
+   "additional": [
+    "23.2",
+    "31.1",
+    "27.2"
+   ],
+   "expected": {
+    "count": 4,
+    "areaHa": 45.0,
+    "ip": 1.014422222222,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 4440,
+    "gradM2": 467409,
+    "sppNewM2": 382615,
+    "sppDemolM2": 45151,
+    "deltaAvarM2": 3001,
+    "deltaSppNewM2": 55029,
+    "deltaSppDemolM2": 13530
+   }
+  },
+  {
+   "note": "рекомендация",
+   "anchor": "2.2",
+   "additional": [
+    "23.1",
+    "17.1",
+    "18.3"
+   ],
+   "expected": {
+    "count": 4,
+    "areaHa": 43.0,
+    "ip": 1.003674418605,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 33656,
+    "gradM2": 451731,
+    "sppNewM2": 392643,
+    "sppDemolM2": 12785,
+    "deltaAvarM2": 13208,
+    "deltaSppNewM2": 156110,
+    "deltaSppDemolM2": 8340
+   }
+  },
+  {
+   "note": "рекомендация",
+   "anchor": "7.1",
+   "additional": [
+    "20.3",
+    "35.2"
+   ],
+   "expected": {
+    "count": 3,
+    "areaHa": 45.0,
+    "ip": 1.181555555556,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 5498,
+    "gradM2": 469336,
+    "sppNewM2": 375469,
+    "sppDemolM2": 53070,
+    "deltaAvarM2": 3181,
+    "deltaSppNewM2": 0,
+    "deltaSppDemolM2": 0
+   }
+  },
+  {
+   "note": "рекомендация",
+   "anchor": "7.2",
+   "additional": [
+    "19.1",
+    "30.3"
+   ],
+   "expected": {
+    "count": 3,
+    "areaHa": 44.6,
+    "ip": 1.009035874439,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 10585,
+    "gradM2": 403152,
+    "sppNewM2": 335788,
+    "sppDemolM2": 39498,
+    "deltaAvarM2": 111,
+    "deltaSppNewM2": 110173,
+    "deltaSppDemolM2": 11408
+   }
+  },
+  {
+   "note": "рекомендация",
+   "anchor": "9.1",
+   "additional": [
+    "32.3",
+    "25.2"
+   ],
+   "expected": {
+    "count": 3,
+    "areaHa": 45.0,
+    "ip": 1.045866666667,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 20266,
+    "gradM2": 208922,
+    "sppNewM2": 166133,
+    "sppDemolM2": 13604,
+    "deltaAvarM2": 11300,
+    "deltaSppNewM2": 20748,
+    "deltaSppDemolM2": 615
+   }
+  },
+  {
+   "note": "рекомендация",
+   "anchor": "11.2",
+   "additional": [
+    "17.2",
+    "20.4",
+    "16.3"
+   ],
+   "expected": {
+    "count": 4,
+    "areaHa": 44.5,
+    "ip": 1.006719101124,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 22791,
+    "gradM2": 564418,
+    "sppNewM2": 382521,
+    "sppDemolM2": 58792,
+    "deltaAvarM2": 9262,
+    "deltaSppNewM2": 203876,
+    "deltaSppDemolM2": 34236
+   }
+  },
+  {
+   "note": "рекомендация",
+   "anchor": "12.2",
+   "additional": [
+    "14.2",
+    "21.3",
+    "21.2"
+   ],
+   "expected": {
+    "count": 4,
+    "areaHa": 43.8,
+    "ip": 1.001689497717,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 11568,
+    "gradM2": 608558,
+    "sppNewM2": 497616,
+    "sppDemolM2": 114925,
+    "deltaAvarM2": 7976,
+    "deltaSppNewM2": 406449,
+    "deltaSppDemolM2": 104819
+   }
+  },
+  {
+   "note": "рекомендация",
+   "anchor": "13.3",
+   "additional": [
+    "9.2",
+    "1.1",
+    "34.3"
+   ],
+   "expected": {
+    "count": 4,
+    "areaHa": 44.5,
+    "ip": 1.147662921348,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 13391,
+    "gradM2": 580755,
+    "sppNewM2": 493641,
+    "sppDemolM2": 75775,
+    "deltaAvarM2": 4725,
+    "deltaSppNewM2": 326964,
+    "deltaSppDemolM2": 66897
+   }
+  },
+  {
+   "note": "рекомендация",
+   "anchor": "14.3",
+   "additional": [
+    "32.2",
+    "31.2",
+    "24.1"
+   ],
+   "expected": {
+    "count": 4,
+    "areaHa": 45.0,
+    "ip": 1.161266666667,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 17736,
+    "gradM2": 583265,
+    "sppNewM2": 476571,
+    "sppDemolM2": 65330,
+    "deltaAvarM2": 10087,
+    "deltaSppNewM2": 363093,
+    "deltaSppDemolM2": 59109
+   }
+  },
+  {
+   "note": "рекомендация",
+   "anchor": "16.2",
+   "additional": [
+    "8.1",
+    "28.1",
+    "27.4"
+   ],
+   "expected": {
+    "count": 4,
+    "areaHa": 43.5,
+    "ip": 1.021448275862,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 7042,
+    "gradM2": 421449,
+    "sppNewM2": 157865,
+    "sppDemolM2": 77938,
+    "deltaAvarM2": 6130,
+    "deltaSppNewM2": 124225,
+    "deltaSppDemolM2": 61252
+   }
+  },
+  {
+   "note": "рекомендация",
+   "anchor": "17.3",
+   "additional": [
+    "13.1",
+    "33.1",
+    "35.3"
+   ],
+   "expected": {
+    "count": 4,
+    "areaHa": 44.8,
+    "ip": 1.068058035714,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 16780,
+    "gradM2": 437402,
+    "sppNewM2": 370845,
+    "sppDemolM2": 76730,
+    "deltaAvarM2": 6740,
+    "deltaSppNewM2": 247727,
+    "deltaSppDemolM2": 63382
+   }
+  },
+  {
+   "note": "рекомендация",
+   "anchor": "20.1",
+   "additional": [
+    "25.1",
+    "8.2"
+   ],
+   "expected": {
+    "count": 3,
+    "areaHa": 45.0,
+    "ip": 1.014622222222,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 3906,
+    "gradM2": 407632,
+    "sppNewM2": 158374,
+    "sppDemolM2": 39330,
+    "deltaAvarM2": 3158,
+    "deltaSppNewM2": 43708,
+    "deltaSppDemolM2": 5292
+   }
+  },
+  {
+   "note": "рекомендация",
+   "anchor": "22.1",
+   "additional": [
+    "15.3",
+    "15.1",
+    "18.4"
+   ],
+   "expected": {
+    "count": 4,
+    "areaHa": 44.7,
+    "ip": 1.002013422819,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 7686,
+    "gradM2": 396483,
+    "sppNewM2": 332792,
+    "sppDemolM2": 93261,
+    "deltaAvarM2": 1405,
+    "deltaSppNewM2": 208522,
+    "deltaSppDemolM2": 81156
+   }
+  },
+  {
+   "note": "рекомендация",
+   "anchor": "29.1",
+   "additional": [
+    "24.2",
+    "18.1",
+    "11.1"
+   ],
+   "expected": {
+    "count": 4,
+    "areaHa": 44.7,
+    "ip": 1.00970917226,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 15120,
+    "gradM2": 501894,
+    "sppNewM2": 327271,
+    "sppDemolM2": 70837,
+    "deltaAvarM2": 11469,
+    "deltaSppNewM2": 271868,
+    "deltaSppDemolM2": 53259
+   }
+  },
+  {
+   "note": "рекомендация",
+   "anchor": "31.3",
+   "additional": [
+    "18.2",
+    "34.1"
+   ],
+   "expected": {
+    "count": 3,
+    "areaHa": 45.0,
+    "ip": 1.026733333333,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 9756,
+    "gradM2": 613229,
+    "sppNewM2": 501241,
+    "sppDemolM2": 54704,
+    "deltaAvarM2": 163,
+    "deltaSppNewM2": 158654,
+    "deltaSppDemolM2": 31313
+   }
+  },
+  {
+   "note": "рекомендация",
+   "anchor": "31.4",
+   "additional": [],
+   "expected": {
+    "count": 1,
+    "areaHa": 52.6,
+    "ip": 1.28,
+    "ipValid": true,
+    "areaFits": false,
+    "avarM2": 5453,
+    "gradM2": 231066,
+    "sppNewM2": 125573,
+    "sppDemolM2": 27756,
+    "deltaAvarM2": 0,
+    "deltaSppNewM2": 0,
+    "deltaSppDemolM2": 0
+   }
+  },
+  {
+   "note": "только опорная",
+   "anchor": "1.2",
+   "additional": [],
+   "expected": {
+    "count": 1,
+    "areaHa": 26.7,
+    "ip": 1.16,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 4796,
+    "gradM2": 346852,
+    "sppNewM2": 277482,
+    "sppDemolM2": 18699,
+    "deltaAvarM2": 0,
+    "deltaSppNewM2": 0,
+    "deltaSppDemolM2": 0
+   }
+  },
+  {
+   "note": "только опорная",
+   "anchor": "2.1",
+   "additional": [],
+   "expected": {
+    "count": 1,
+    "areaHa": 41.6,
+    "ip": 1.04,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 1439,
+    "gradM2": 409483,
+    "sppNewM2": 327586,
+    "sppDemolM2": 31621,
+    "deltaAvarM2": 0,
+    "deltaSppNewM2": 0,
+    "deltaSppDemolM2": 0
+   }
+  },
+  {
+   "note": "только опорная",
+   "anchor": "2.2",
+   "additional": [],
+   "expected": {
+    "count": 1,
+    "areaHa": 26.2,
+    "ip": 1.3,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 20448,
+    "gradM2": 278274,
+    "sppNewM2": 236533,
+    "sppDemolM2": 4445,
+    "deltaAvarM2": 0,
+    "deltaSppNewM2": 0,
+    "deltaSppDemolM2": 0
+   }
+  },
+  {
+   "note": "только опорная",
+   "anchor": "7.1",
+   "additional": [],
+   "expected": {
+    "count": 1,
+    "areaHa": 40.9,
+    "ip": 1.3,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 2317,
+    "gradM2": 469336,
+    "sppNewM2": 375469,
+    "sppDemolM2": 53070,
+    "deltaAvarM2": 0,
+    "deltaSppNewM2": 0,
+    "deltaSppDemolM2": 0
+   }
+  },
+  {
+   "note": "только опорная",
+   "anchor": "7.2",
+   "additional": [],
+   "expected": {
+    "count": 1,
+    "areaHa": 33.8,
+    "ip": 1.02,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 10474,
+    "gradM2": 282019,
+    "sppNewM2": 225615,
+    "sppDemolM2": 28090,
+    "deltaAvarM2": 0,
+    "deltaSppNewM2": 0,
+    "deltaSppDemolM2": 0
+   }
+  },
+  {
+   "note": "только опорная",
+   "anchor": "9.1",
+   "additional": [],
+   "expected": {
+    "count": 1,
+    "areaHa": 8.8,
+    "ip": 1.15,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 8966,
+    "gradM2": 171041,
+    "sppNewM2": 145385,
+    "sppDemolM2": 12989,
+    "deltaAvarM2": 0,
+    "deltaSppNewM2": 0,
+    "deltaSppDemolM2": 0
+   }
+  },
+  {
+   "note": "только опорная",
+   "anchor": "11.2",
+   "additional": [],
+   "expected": {
+    "count": 1,
+    "areaHa": 19.6,
+    "ip": 1.23,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 13529,
+    "gradM2": 276468,
+    "sppNewM2": 178645,
+    "sppDemolM2": 24556,
+    "deltaAvarM2": 0,
+    "deltaSppNewM2": 0,
+    "deltaSppDemolM2": 0
+   }
+  },
+  {
+   "note": "только опорная",
+   "anchor": "12.2",
+   "additional": [],
+   "expected": {
+    "count": 1,
+    "areaHa": 7.1,
+    "ip": 1.2,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 3592,
+    "gradM2": 107255,
+    "sppNewM2": 91167,
+    "sppDemolM2": 10106,
+    "deltaAvarM2": 0,
+    "deltaSppNewM2": 0,
+    "deltaSppDemolM2": 0
+   }
+  },
+  {
+   "note": "только опорная",
+   "anchor": "13.3",
+   "additional": [],
+   "expected": {
+    "count": 1,
+    "areaHa": 17.0,
+    "ip": 1.21,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 8666,
+    "gradM2": 196091,
+    "sppNewM2": 166677,
+    "sppDemolM2": 8878,
+    "deltaAvarM2": 0,
+    "deltaSppNewM2": 0,
+    "deltaSppDemolM2": 0
+   }
+  },
+  {
+   "note": "только опорная",
+   "anchor": "14.3",
+   "additional": [],
+   "expected": {
+    "count": 1,
+    "areaHa": 9.9,
+    "ip": 1.13,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 7649,
+    "gradM2": 133503,
+    "sppNewM2": 113478,
+    "sppDemolM2": 6221,
+    "deltaAvarM2": 0,
+    "deltaSppNewM2": 0,
+    "deltaSppDemolM2": 0
+   }
+  },
+  {
+   "note": "только опорная",
+   "anchor": "16.2",
+   "additional": [],
+   "expected": {
+    "count": 1,
+    "areaHa": 1.8,
+    "ip": 1.07,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 912,
+    "gradM2": 36817,
+    "sppNewM2": 33640,
+    "sppDemolM2": 16686,
+    "deltaAvarM2": 0,
+    "deltaSppNewM2": 0,
+    "deltaSppDemolM2": 0
+   }
+  },
+  {
+   "note": "только опорная",
+   "anchor": "17.3",
+   "additional": [],
+   "expected": {
+    "count": 1,
+    "areaHa": 19.4,
+    "ip": 1.04,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 10040,
+    "gradM2": 144844,
+    "sppNewM2": 123118,
+    "sppDemolM2": 13348,
+    "deltaAvarM2": 0,
+    "deltaSppNewM2": 0,
+    "deltaSppDemolM2": 0
+   }
+  },
+  {
+   "note": "только опорная",
+   "anchor": "20.1",
+   "additional": [],
+   "expected": {
+    "count": 1,
+    "areaHa": 36.1,
+    "ip": 1.0,
+    "ipValid": false,
+    "areaFits": true,
+    "avarM2": 748,
+    "gradM2": 332752,
+    "sppNewM2": 114666,
+    "sppDemolM2": 34038,
+    "deltaAvarM2": 0,
+    "deltaSppNewM2": 0,
+    "deltaSppDemolM2": 0
+   }
+  },
+  {
+   "note": "только опорная",
+   "anchor": "22.1",
+   "additional": [],
+   "expected": {
+    "count": 1,
+    "areaHa": 15.8,
+    "ip": 1.25,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 6281,
+    "gradM2": 146200,
+    "sppNewM2": 124270,
+    "sppDemolM2": 12105,
+    "deltaAvarM2": 0,
+    "deltaSppNewM2": 0,
+    "deltaSppDemolM2": 0
+   }
+  },
+  {
+   "note": "только опорная",
+   "anchor": "29.1",
+   "additional": [],
+   "expected": {
+    "count": 1,
+    "areaHa": 9.3,
+    "ip": 1.08,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 3651,
+    "gradM2": 89719,
+    "sppNewM2": 55403,
+    "sppDemolM2": 17578,
+    "deltaAvarM2": 0,
+    "deltaSppNewM2": 0,
+    "deltaSppDemolM2": 0
+   }
+  },
+  {
+   "note": "только опорная",
+   "anchor": "31.3",
+   "additional": [],
+   "expected": {
+    "count": 1,
+    "areaHa": 29.8,
+    "ip": 1.06,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 9593,
+    "gradM2": 428234,
+    "sppNewM2": 342587,
+    "sppDemolM2": 23391,
+    "deltaAvarM2": 0,
+    "deltaSppNewM2": 0,
+    "deltaSppDemolM2": 0
+   }
+  },
+  {
+   "note": "только опорная",
+   "anchor": "31.4",
+   "additional": [],
+   "expected": {
+    "count": 1,
+    "areaHa": 52.6,
+    "ip": 1.28,
+    "ipValid": true,
+    "areaFits": false,
+    "avarM2": 5453,
+    "gradM2": 231066,
+    "sppNewM2": 125573,
+    "sppDemolM2": 27756,
+    "deltaAvarM2": 0,
+    "deltaSppNewM2": 0,
+    "deltaSppDemolM2": 0
+   }
+  },
+  {
+   "note": "с 15.3, IP = 1,00",
+   "anchor": "11.2",
+   "additional": [
+    "15.3"
+   ],
+   "expected": {
+    "count": 2,
+    "areaHa": 21.4,
+    "ip": 1.210654205607,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 14833,
+    "gradM2": 310112,
+    "sppNewM2": 203024,
+    "sppDemolM2": 33924,
+    "deltaAvarM2": 1304,
+    "deltaSppNewM2": 24379,
+    "deltaSppDemolM2": 9368
+   }
+  },
+  {
+   "note": "с 19.1, IP = 1,00",
+   "anchor": "11.2",
+   "additional": [
+    "19.1"
+   ],
+   "expected": {
+    "count": 2,
+    "areaHa": 29.1,
+    "ip": 1.154914089347,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 13529,
+    "gradM2": 374536,
+    "sppNewM2": 266906,
+    "sppDemolM2": 35651,
+    "deltaAvarM2": 0,
+    "deltaSppNewM2": 88261,
+    "deltaSppDemolM2": 11095
+   }
+  },
+  {
+   "note": "с IP = 0, не проходит",
+   "anchor": "11.2",
+   "additional": [
+    "20.2",
+    "27.3"
+   ],
+   "expected": {
+    "count": 3,
+    "areaHa": 40.6,
+    "ip": 0.593793103448,
+    "ipValid": false,
+    "areaFits": true,
+    "avarM2": 31732,
+    "gradM2": 276468,
+    "sppNewM2": 178645,
+    "sppDemolM2": 24556,
+    "deltaAvarM2": 18203,
+    "deltaSppNewM2": 0,
+    "deltaSppDemolM2": 0
+   }
+  },
+  {
+   "note": "превышение 45 га",
+   "anchor": "2.2",
+   "additional": [
+    "27.6",
+    "30.2"
+   ],
+   "expected": {
+    "count": 3,
+    "areaHa": 70.9,
+    "ip": 0.480394922426,
+    "ipValid": false,
+    "areaFits": false,
+    "avarM2": 21632,
+    "gradM2": 278274,
+    "sppNewM2": 236533,
+    "sppDemolM2": 4445,
+    "deltaAvarM2": 1184,
+    "deltaSppNewM2": 0,
+    "deltaSppDemolM2": 0
+   }
+  },
+  {
+   "note": "минимальный запас по IP",
+   "anchor": "1.2",
+   "additional": [
+    "23.2",
+    "32.2",
+    "35.3",
+    "27.4"
+   ],
+   "expected": {
+    "count": 5,
+    "areaHa": 32.0,
+    "ip": 1.00003125,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 9949,
+    "gradM2": 368691,
+    "sppNewM2": 298228,
+    "sppDemolM2": 19803,
+    "deltaAvarM2": 5153,
+    "deltaSppNewM2": 20746,
+    "deltaSppDemolM2": 1104
+   }
+  },
+  {
+   "note": "минимальный запас по IP",
+   "anchor": "1.2",
+   "additional": [
+    "32.2",
+    "27.4",
+    "34.1"
+   ],
+   "expected": {
+    "count": 4,
+    "areaHa": 43.6,
+    "ip": 1.00002293578,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 7180,
+    "gradM2": 514641,
+    "sppNewM2": 421197,
+    "sppDemolM2": 51116,
+    "deltaAvarM2": 2384,
+    "deltaSppNewM2": 143715,
+    "deltaSppDemolM2": 32417
+   }
+  },
+  {
+   "note": "минимальный запас по IP",
+   "anchor": "7.2",
+   "additional": [
+    "35.3",
+    "27.2",
+    "8.1",
+    "25.1"
+   ],
+   "expected": {
+    "count": 5,
+    "areaHa": 44.9,
+    "ip": 1.000022271715,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 14770,
+    "gradM2": 380082,
+    "sppNewM2": 291347,
+    "sppDemolM2": 36405,
+    "deltaAvarM2": 4296,
+    "deltaSppNewM2": 65732,
+    "deltaSppDemolM2": 8315
+   }
+  },
+  {
+   "note": "ровно 45 га, 5 площадок",
+   "anchor": "1.2",
+   "additional": [
+    "23.2",
+    "31.2",
+    "18.1",
+    "19.1"
+   ],
+   "expected": {
+    "count": 5,
+    "areaHa": 45.0,
+    "ip": 1.090311111111,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 11495,
+    "gradM2": 545425,
+    "sppNewM2": 453355,
+    "sppDemolM2": 30306,
+    "deltaAvarM2": 6699,
+    "deltaSppNewM2": 175873,
+    "deltaSppDemolM2": 11607
+   }
+  },
+  {
+   "note": "ровно 45 га, 5 площадок",
+   "anchor": "1.2",
+   "additional": [
+    "23.2",
+    "32.2",
+    "18.1",
+    "19.1"
+   ],
+   "expected": {
+    "count": 5,
+    "areaHa": 45.0,
+    "ip": 1.091644444444,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 12306,
+    "gradM2": 545434,
+    "sppNewM2": 453363,
+    "sppDemolM2": 30544,
+    "deltaAvarM2": 7510,
+    "deltaSppNewM2": 175881,
+    "deltaSppDemolM2": 11845
+   }
+  },
+  {
+   "note": "ровно 45 га, 5 площадок",
+   "anchor": "1.2",
+   "additional": [
+    "23.2",
+    "35.3",
+    "18.1",
+    "19.1"
+   ],
+   "expected": {
+    "count": 5,
+    "areaHa": 45.0,
+    "ip": 1.079111111111,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 12112,
+    "gradM2": 534484,
+    "sppNewM2": 442961,
+    "sppDemolM2": 30306,
+    "deltaAvarM2": 7316,
+    "deltaSppNewM2": 165479,
+    "deltaSppDemolM2": 11607
+   }
+  },
+  {
+   "note": "случайная допустимая",
+   "anchor": "1.2",
+   "additional": [
+    "32.2",
+    "27.2",
+    "31.1",
+    "19.1"
+   ],
+   "expected": {
+    "count": 5,
+    "areaHa": 39.7,
+    "ip": 1.08201511335,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 6456,
+    "gradM2": 502907,
+    "sppNewM2": 420830,
+    "sppDemolM2": 43562,
+    "deltaAvarM2": 1660,
+    "deltaSppNewM2": 143348,
+    "deltaSppDemolM2": 24863
+   }
+  },
+  {
+   "note": "случайная допустимая",
+   "anchor": "29.1",
+   "additional": [
+    "31.2",
+    "32.2",
+    "23.1",
+    "16.3"
+   ],
+   "expected": {
+    "count": 5,
+    "areaHa": 32.4,
+    "ip": 1.04200617284,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 6566,
+    "gradM2": 432311,
+    "sppNewM2": 309550,
+    "sppDemolM2": 42510,
+    "deltaAvarM2": 2915,
+    "deltaSppNewM2": 254147,
+    "deltaSppDemolM2": 24932
+   }
+  },
+  {
+   "note": "случайная допустимая",
+   "anchor": "17.3",
+   "additional": [
+    "32.2",
+    "27.2",
+    "18.2",
+    "1.1"
+   ],
+   "expected": {
+    "count": 5,
+    "areaHa": 41.1,
+    "ip": 1.053309002433,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 16141,
+    "gradM2": 442993,
+    "sppNewM2": 379047,
+    "sppDemolM2": 68817,
+    "deltaAvarM2": 6101,
+    "deltaSppNewM2": 255929,
+    "deltaSppDemolM2": 55469
+   }
+  },
+  {
+   "note": "случайная допустимая",
+   "anchor": "22.1",
+   "additional": [
+    "34.3",
+    "15.3",
+    "17.2",
+    "33.1"
+   ],
+   "expected": {
+    "count": 5,
+    "areaHa": 43.3,
+    "ip": 1.120854503464,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 9083,
+    "gradM2": 468139,
+    "sppNewM2": 396862,
+    "sppDemolM2": 91028,
+    "deltaAvarM2": 2802,
+    "deltaSppNewM2": 272592,
+    "deltaSppDemolM2": 78923
+   }
+  },
+  {
+   "note": "случайная допустимая",
+   "anchor": "29.1",
+   "additional": [
+    "20.3",
+    "23.1",
+    "9.2",
+    "15.1"
+   ],
+   "expected": {
+    "count": 5,
+    "areaHa": 36.4,
+    "ip": 1.088406593407,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 5760,
+    "gradM2": 415085,
+    "sppNewM2": 336763,
+    "sppDemolM2": 93514,
+    "deltaAvarM2": 2109,
+    "deltaSppNewM2": 281360,
+    "deltaSppDemolM2": 75936
+   }
+  },
+  {
+   "note": "случайная допустимая",
+   "anchor": "9.1",
+   "additional": [
+    "25.2",
+    "27.2",
+    "14.2"
+   ],
+   "expected": {
+    "count": 4,
+    "areaHa": 35.3,
+    "ip": 1.156912181303,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 10513,
+    "gradM2": 581306,
+    "sppNewM2": 460923,
+    "sppDemolM2": 117754,
+    "deltaAvarM2": 1547,
+    "deltaSppNewM2": 315538,
+    "deltaSppDemolM2": 104765
+   }
+  },
+  {
+   "note": "случайная допустимая",
+   "anchor": "17.3",
+   "additional": [
+    "27.2",
+    "17.2",
+    "23.1"
+   ],
+   "expected": {
+    "count": 4,
+    "areaHa": 28.1,
+    "ip": 1.027259786477,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 10889,
+    "gradM2": 304097,
+    "sppNewM2": 266445,
+    "sppDemolM2": 23678,
+    "deltaAvarM2": 849,
+    "deltaSppNewM2": 143327,
+    "deltaSppDemolM2": 10330
+   }
+  },
+  {
+   "note": "случайная допустимая",
+   "anchor": "17.3",
+   "additional": [
+    "14.1",
+    "13.2",
+    "18.1"
+   ],
+   "expected": {
+    "count": 4,
+    "areaHa": 38.3,
+    "ip": 1.013394255875,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 28436,
+    "gradM2": 349430,
+    "sppNewM2": 303312,
+    "sppDemolM2": 32938,
+    "deltaAvarM2": 18396,
+    "deltaSppNewM2": 180194,
+    "deltaSppDemolM2": 19590
+   }
+  },
+  {
+   "note": "случайная допустимая",
+   "anchor": "31.3",
+   "additional": [
+    "30.3",
+    "31.1",
+    "18.2",
+    "18.1"
+   ],
+   "expected": {
+    "count": 5,
+    "areaHa": 43.3,
+    "ip": 1.032517321016,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 14414,
+    "gradM2": 605167,
+    "sppNewM2": 501399,
+    "sppDemolM2": 37746,
+    "deltaAvarM2": 4821,
+    "deltaSppNewM2": 158812,
+    "deltaSppDemolM2": 14355
+   }
+  },
+  {
+   "note": "случайная допустимая",
+   "anchor": "2.2",
+   "additional": [
+    "31.2",
+    "34.3",
+    "21.3",
+    "18.1"
+   ],
+   "expected": {
+    "count": 5,
+    "areaHa": 41.9,
+    "ip": 1.006849642005,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 33247,
+    "gradM2": 367890,
+    "sppNewM2": 313801,
+    "sppDemolM2": 5011,
+    "deltaAvarM2": 12799,
+    "deltaSppNewM2": 77268,
+    "deltaSppDemolM2": 566
+   }
+  },
+  {
+   "note": "случайная допустимая",
+   "anchor": "14.3",
+   "additional": [
+    "32.2",
+    "15.3",
+    "31.1",
+    "11.1"
+   ],
+   "expected": {
+    "count": 5,
+    "areaHa": 31.3,
+    "ip": 1.026549520767,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 10596,
+    "gradM2": 416145,
+    "sppNewM2": 355304,
+    "sppDemolM2": 81576,
+    "deltaAvarM2": 2947,
+    "deltaSppNewM2": 241826,
+    "deltaSppDemolM2": 75355
+   }
+  },
+  {
+   "note": "случайная допустимая",
+   "anchor": "12.2",
+   "additional": [
+    "32.2",
+    "17.1",
+    "18.1",
+    "15.1"
+   ],
+   "expected": {
+    "count": 5,
+    "areaHa": 31.6,
+    "ip": 1.083259493671,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 10155,
+    "gradM2": 378078,
+    "sppNewM2": 326333,
+    "sppDemolM2": 82408,
+    "deltaAvarM2": 6563,
+    "deltaSppNewM2": 235166,
+    "deltaSppDemolM2": 72302
+   }
+  },
+  {
+   "note": "случайная допустимая",
+   "anchor": "13.3",
+   "additional": [
+    "8.2",
+    "34.3",
+    "18.2",
+    "25.1"
+   ],
+   "expected": {
+    "count": 5,
+    "areaHa": 29.8,
+    "ip": 1.096577181208,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 12263,
+    "gradM2": 299127,
+    "sppNewM2": 235726,
+    "sppDemolM2": 14170,
+    "deltaAvarM2": 3597,
+    "deltaSppNewM2": 69049,
+    "deltaSppDemolM2": 5292
+   }
+  },
+  {
+   "note": "случайная допустимая",
+   "anchor": "22.1",
+   "additional": [
+    "13.1",
+    "20.4",
+    "25.1",
+    "15.1"
+   ],
+   "expected": {
+    "count": 5,
+    "areaHa": 44.3,
+    "ip": 1.048893905192,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 20986,
+    "gradM2": 383889,
+    "sppNewM2": 304573,
+    "sppDemolM2": 85036,
+    "deltaAvarM2": 14705,
+    "deltaSppNewM2": 180303,
+    "deltaSppDemolM2": 72931
+   }
+  },
+  {
+   "note": "случайная допустимая",
+   "anchor": "14.3",
+   "additional": [
+    "25.2",
+    "8.1",
+    "15.3",
+    "24.2"
+   ],
+   "expected": {
+    "count": 5,
+    "areaHa": 24.8,
+    "ip": 1.044112903226,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 16026,
+    "gradM2": 358368,
+    "sppNewM2": 211548,
+    "sppDemolM2": 19140,
+    "deltaAvarM2": 8377,
+    "deltaSppNewM2": 98070,
+    "deltaSppDemolM2": 12919
+   }
+  },
+  {
+   "note": "случайная допустимая",
+   "anchor": "17.3",
+   "additional": [
+    "23.2",
+    "20.3",
+    "25.1",
+    "9.2"
+   ],
+   "expected": {
+    "count": 5,
+    "areaHa": 38.2,
+    "ip": 1.048455497382,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 16745,
+    "gradM2": 347786,
+    "sppNewM2": 275922,
+    "sppDemolM2": 30306,
+    "deltaAvarM2": 6705,
+    "deltaSppNewM2": 152804,
+    "deltaSppDemolM2": 16958
+   }
+  },
+  {
+   "note": "случайная допустимая",
+   "anchor": "13.3",
+   "additional": [
+    "23.2",
+    "35.3",
+    "18.2",
+    "12.1"
+   ],
+   "expected": {
+    "count": 5,
+    "areaHa": 26.6,
+    "ip": 1.094172932331,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 11969,
+    "gradM2": 324424,
+    "sppNewM2": 281905,
+    "sppDemolM2": 18329,
+    "deltaAvarM2": 3303,
+    "deltaSppNewM2": 115228,
+    "deltaSppDemolM2": 9451
+   }
+  },
+  {
+   "note": "случайная допустимая",
+   "anchor": "13.3",
+   "additional": [
+    "31.2",
+    "30.3",
+    "35.2",
+    "14.1"
+   ],
+   "expected": {
+    "count": 5,
+    "areaHa": 25.0,
+    "ip": 1.03452,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 10485,
+    "gradM2": 282003,
+    "sppNewM2": 245699,
+    "sppDemolM2": 21408,
+    "deltaAvarM2": 1819,
+    "deltaSppNewM2": 79022,
+    "deltaSppDemolM2": 12530
+   }
+  },
+  {
+   "note": "случайная допустимая",
+   "anchor": "14.3",
+   "additional": [
+    "8.2",
+    "13.2",
+    "9.2",
+    "1.1"
+   ],
+   "expected": {
+    "count": 5,
+    "areaHa": 44.2,
+    "ip": 1.121900452489,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 26196,
+    "gradM2": 600620,
+    "sppNewM2": 515072,
+    "sppDemolM2": 79979,
+    "deltaAvarM2": 18547,
+    "deltaSppNewM2": 401594,
+    "deltaSppDemolM2": 73758
+   }
+  },
+  {
+   "note": "случайная допустимая",
+   "anchor": "17.3",
+   "additional": [
+    "31.2",
+    "32.2",
+    "8.1",
+    "14.1"
+   ],
+   "expected": {
+    "count": 5,
+    "areaHa": 25.9,
+    "ip": 1.023976833977,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 11500,
+    "gradM2": 250272,
+    "sppNewM2": 220680,
+    "sppDemolM2": 28826,
+    "deltaAvarM2": 1460,
+    "deltaSppNewM2": 97562,
+    "deltaSppDemolM2": 15478
+   }
+  },
+  {
+   "note": "случайная допустимая",
+   "anchor": "11.2",
+   "additional": [
+    "20.3",
+    "18.2",
+    "12.1",
+    "21.2"
+   ],
+   "expected": {
+    "count": 5,
+    "areaHa": 35.9,
+    "ip": 1.041727019499,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 15900,
+    "gradM2": 502051,
+    "sppNewM2": 375447,
+    "sppDemolM2": 34007,
+    "deltaAvarM2": 2371,
+    "deltaSppNewM2": 196802,
+    "deltaSppDemolM2": 9451
+   }
+  },
+  {
+   "note": "случайная допустимая",
+   "anchor": "31.3",
+   "additional": [
+    "32.2",
+    "8.1",
+    "15.3",
+    "18.1"
+   ],
+   "expected": {
+    "count": 5,
+    "areaHa": 41.4,
+    "ip": 1.040821256039,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 16540,
+    "gradM2": 583134,
+    "sppNewM2": 474292,
+    "sppDemolM2": 36532,
+    "deltaAvarM2": 6947,
+    "deltaSppNewM2": 131705,
+    "deltaSppDemolM2": 13141
+   }
+  },
+  {
+   "note": "случайная допустимая",
+   "anchor": "2.2",
+   "additional": [
+    "31.2",
+    "20.3",
+    "20.4",
+    "21.2"
+   ],
+   "expected": {
+    "count": 5,
+    "areaHa": 38.6,
+    "ip": 1.03067357513,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 29443,
+    "gradM2": 397354,
+    "sppNewM2": 338845,
+    "sppDemolM2": 4445,
+    "deltaAvarM2": 8995,
+    "deltaSppNewM2": 102312,
+    "deltaSppDemolM2": 0
+   }
+  },
+  {
+   "note": "случайная допустимая",
+   "anchor": "12.2",
+   "additional": [
+    "31.2",
+    "35.3",
+    "17.2"
+   ],
+   "expected": {
+    "count": 4,
+    "areaHa": 11.7,
+    "ip": 1.058974358974,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 4209,
+    "gradM2": 181447,
+    "sppNewM2": 158487,
+    "sppDemolM2": 20042,
+    "deltaAvarM2": 617,
+    "deltaSppNewM2": 67320,
+    "deltaSppDemolM2": 9936
+   }
+  },
+  {
+   "note": "случайная допустимая",
+   "anchor": "11.2",
+   "additional": [
+    "32.2",
+    "17.1",
+    "14.1",
+    "9.2"
+   ],
+   "expected": {
+    "count": 5,
+    "areaHa": 36.1,
+    "ip": 1.183047091413,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 15979,
+    "gradM2": 542400,
+    "sppNewM2": 412250,
+    "sppDemolM2": 56353,
+    "deltaAvarM2": 2450,
+    "deltaSppNewM2": 233605,
+    "deltaSppDemolM2": 31797
+   }
+  },
+  {
+   "note": "случайная допустимая",
+   "anchor": "12.2",
+   "additional": [
+    "31.2",
+    "27.2",
+    "31.1",
+    "33.1"
+   ],
+   "expected": {
+    "count": 5,
+    "areaHa": 31.5,
+    "ip": 1.097174603175,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 5663,
+    "gradM2": 390277,
+    "sppNewM2": 337533,
+    "sppDemolM2": 83255,
+    "deltaAvarM2": 2071,
+    "deltaSppNewM2": 246366,
+    "deltaSppDemolM2": 73149
+   }
+  },
+  {
+   "note": "случайная допустимая",
+   "anchor": "1.2",
+   "additional": [
+    "34.3",
+    "31.1",
+    "35.2",
+    "17.1"
+   ],
+   "expected": {
+    "count": 5,
+    "areaHa": 36.1,
+    "ip": 1.01567867036,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 7520,
+    "gradM2": 471344,
+    "sppNewM2": 391876,
+    "sppDemolM2": 39905,
+    "deltaAvarM2": 2724,
+    "deltaSppNewM2": 114394,
+    "deltaSppDemolM2": 21206
+   }
+  },
+  {
+   "note": "случайная допустимая",
+   "anchor": "2.2",
+   "additional": [
+    "30.3",
+    "34.3",
+    "21.2",
+    "19.1"
+   ],
+   "expected": {
+    "count": 5,
+    "areaHa": 44.4,
+    "ip": 1.121779279279,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 20835,
+    "gradM2": 507546,
+    "sppNewM2": 438624,
+    "sppDemolM2": 15853,
+    "deltaAvarM2": 387,
+    "deltaSppNewM2": 202091,
+    "deltaSppDemolM2": 11408
+   }
+  },
+  {
+   "note": "случайная допустимая",
+   "anchor": "22.1",
+   "additional": [
+    "32.2",
+    "25.2",
+    "35.2",
+    "1.1"
+   ],
+   "expected": {
+    "count": 5,
+    "areaHa": 37.3,
+    "ip": 1.096514745308,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 13412,
+    "gradM2": 433294,
+    "sppNewM2": 355865,
+    "sppDemolM2": 67574,
+    "deltaAvarM2": 7131,
+    "deltaSppNewM2": 231595,
+    "deltaSppDemolM2": 55469
+   }
+  },
+  {
+   "note": "случайная допустимая",
+   "anchor": "13.3",
+   "additional": [
+    "8.2",
+    "31.1",
+    "17.2",
+    "34.1"
+   ],
+   "expected": {
+    "count": 5,
+    "areaHa": 35.9,
+    "ip": 1.0743454039,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 9279,
+    "gradM2": 471666,
+    "sppNewM2": 409627,
+    "sppDemolM2": 63657,
+    "deltaAvarM2": 613,
+    "deltaSppNewM2": 242950,
+    "deltaSppDemolM2": 54779
+   }
+  },
+  {
+   "note": "случайный набор",
+   "anchor": "31.3",
+   "additional": [
+    "11.1",
+    "18.2",
+    "25.1"
+   ],
+   "expected": {
+    "count": 4,
+    "areaHa": 57.4,
+    "ip": 1.040209059233,
+    "ipValid": true,
+    "areaFits": false,
+    "avarM2": 13133,
+    "gradM2": 713833,
+    "sppNewM2": 565970,
+    "sppDemolM2": 80902,
+    "deltaAvarM2": 3540,
+    "deltaSppNewM2": 223383,
+    "deltaSppDemolM2": 57511
+   }
+  },
+  {
+   "note": "случайный набор",
+   "anchor": "12.2",
+   "additional": [
+    "25.1",
+    "24.2",
+    "24.1",
+    "18.3"
+   ],
+   "expected": {
+    "count": 5,
+    "areaHa": 68.5,
+    "ip": 0.996189781022,
+    "ipValid": false,
+    "areaFits": false,
+    "avarM2": 33607,
+    "gradM2": 744047,
+    "sppNewM2": 511780,
+    "sppDemolM2": 75067,
+    "deltaAvarM2": 30015,
+    "deltaSppNewM2": 420613,
+    "deltaSppDemolM2": 64961
+   }
+  },
+  {
+   "note": "случайный набор",
+   "anchor": "2.1",
+   "additional": [
+    "27.6",
+    "23.1"
+   ],
+   "expected": {
+    "count": 3,
+    "areaHa": 59.8,
+    "ip": 0.812508361204,
+    "ipValid": false,
+    "areaFits": false,
+    "avarM2": 1935,
+    "gradM2": 505485,
+    "sppNewM2": 413987,
+    "sppDemolM2": 32015,
+    "deltaAvarM2": 496,
+    "deltaSppNewM2": 86401,
+    "deltaSppDemolM2": 394
+   }
+  },
+  {
+   "note": "случайный набор",
+   "anchor": "22.1",
+   "additional": [
+    "27.3"
+   ],
+   "expected": {
+    "count": 2,
+    "areaHa": 26.4,
+    "ip": 0.748106060606,
+    "ipValid": false,
+    "areaFits": true,
+    "avarM2": 13463,
+    "gradM2": 146200,
+    "sppNewM2": 124270,
+    "sppDemolM2": 12105,
+    "deltaAvarM2": 7182,
+    "deltaSppNewM2": 0,
+    "deltaSppDemolM2": 0
+   }
+  },
+  {
+   "note": "случайный набор",
+   "anchor": "13.3",
+   "additional": [
+    "25.1",
+    "27.4"
+   ],
+   "expected": {
+    "count": 3,
+    "areaHa": 28.7,
+    "ip": 1.027177700348,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 12784,
+    "gradM2": 262523,
+    "sppNewM2": 202359,
+    "sppDemolM2": 15036,
+    "deltaAvarM2": 4118,
+    "deltaSppNewM2": 35682,
+    "deltaSppDemolM2": 6158
+   }
+  },
+  {
+   "note": "случайный набор",
+   "anchor": "22.1",
+   "additional": [
+    "13.2",
+    "35.3"
+   ],
+   "expected": {
+    "count": 3,
+    "areaHa": 23.8,
+    "ip": 1.134537815126,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 20383,
+    "gradM2": 220205,
+    "sppNewM2": 190874,
+    "sppDemolM2": 18966,
+    "deltaAvarM2": 14102,
+    "deltaSppNewM2": 66604,
+    "deltaSppDemolM2": 6861
+   }
+  },
+  {
+   "note": "случайный набор",
+   "anchor": "1.2",
+   "additional": [
+    "17.2",
+    "30.2",
+    "18.4",
+    "23.2"
+   ],
+   "expected": {
+    "count": 5,
+    "areaHa": 76.1,
+    "ip": 0.582036793693,
+    "ipValid": false,
+    "areaFits": false,
+    "avarM2": 7636,
+    "gradM2": 533888,
+    "sppNewM2": 440714,
+    "sppDemolM2": 36547,
+    "deltaAvarM2": 2840,
+    "deltaSppNewM2": 163232,
+    "deltaSppDemolM2": 17848
+   }
+  },
+  {
+   "note": "случайный набор",
+   "anchor": "7.1",
+   "additional": [
+    "24.2",
+    "14.1"
+   ],
+   "expected": {
+    "count": 3,
+    "areaHa": 55.4,
+    "ip": 1.222725631769,
+    "ipValid": true,
+    "areaFits": false,
+    "avarM2": 8771,
+    "gradM2": 663731,
+    "sppNewM2": 464819,
+    "sppDemolM2": 65815,
+    "deltaAvarM2": 6454,
+    "deltaSppNewM2": 89350,
+    "deltaSppDemolM2": 12745
+   }
+  },
+  {
+   "note": "случайный набор",
+   "anchor": "1.2",
+   "additional": [
+    "19.1"
+   ],
+   "expected": {
+    "count": 2,
+    "areaHa": 36.2,
+    "ip": 1.118011049724,
+    "ipValid": true,
+    "areaFits": true,
+    "avarM2": 4796,
+    "gradM2": 444920,
+    "sppNewM2": 365743,
+    "sppDemolM2": 29794,
+    "deltaAvarM2": 0,
+    "deltaSppNewM2": 88261,
+    "deltaSppDemolM2": 11095
+   }
+  },
+  {
+   "note": "случайный набор",
+   "anchor": "22.1",
+   "additional": [
+    "21.3",
+    "27.6"
+   ],
+   "expected": {
+    "count": 3,
+    "areaHa": 35.6,
+    "ip": 0.554775280899,
+    "ipValid": false,
+    "areaFits": true,
+    "avarM2": 14753,
+    "gradM2": 146200,
+    "sppNewM2": 124270,
+    "sppDemolM2": 12159,
+    "deltaAvarM2": 8472,
+    "deltaSppNewM2": 0,
+    "deltaSppDemolM2": 54
+   }
+  }
+ ],
+ "optimize": [
+  {
+   "note": "пустой выбор",
+   "anchor": "1.2",
+   "kept": [],
+   "status": "ok",
+   "added": [
+    "13.1",
+    "13.2",
+    "20.4",
+    "23.2"
+   ]
+  },
+  {
+   "note": "пустой выбор",
+   "anchor": "2.1",
+   "kept": [],
+   "status": "ok",
+   "added": [
+    "23.2",
+    "25.2",
+    "27.2",
+    "32.2"
+   ]
+  },
+  {
+   "note": "пустой выбор",
+   "anchor": "2.2",
+   "kept": [],
+   "status": "ok",
+   "added": [
+    "13.1",
+    "13.2",
+    "21.3",
+    "23.2"
+   ]
+  },
+  {
+   "note": "пустой выбор",
+   "anchor": "7.1",
+   "kept": [],
+   "status": "ok",
+   "added": [
+    "20.3",
+    "23.2",
+    "27.2",
+    "32.2"
+   ]
+  },
+  {
+   "note": "пустой выбор",
+   "anchor": "7.2",
+   "kept": [],
+   "status": "ok",
+   "added": [
+    "13.2",
+    "15.3",
+    "23.2",
+    "32.2"
+   ]
+  },
+  {
+   "note": "пустой выбор",
+   "anchor": "9.1",
+   "kept": [],
+   "status": "ok",
+   "added": [
+    "13.1",
+    "13.2",
+    "18.1",
+    "24.2"
+   ]
+  },
+  {
+   "note": "пустой выбор",
+   "anchor": "11.2",
+   "kept": [],
+   "status": "ok",
+   "added": [
+    "13.1",
+    "13.2",
+    "18.1",
+    "20.4"
+   ]
+  },
+  {
+   "note": "пустой выбор",
+   "anchor": "12.2",
+   "kept": [],
+   "status": "ok",
+   "added": [
+    "13.1",
+    "13.2",
+    "18.1",
+    "24.2"
+   ]
+  },
+  {
+   "note": "пустой выбор",
+   "anchor": "13.3",
+   "kept": [],
+   "status": "ok",
+   "added": [
+    "13.1",
+    "13.2",
+    "20.4",
+    "25.1"
+   ]
+  },
+  {
+   "note": "пустой выбор",
+   "anchor": "14.3",
+   "kept": [],
+   "status": "ok",
+   "added": [
+    "13.1",
+    "13.2",
+    "18.1",
+    "24.2"
+   ]
+  },
+  {
+   "note": "пустой выбор",
+   "anchor": "16.2",
+   "kept": [],
+   "status": "ok",
+   "added": [
+    "13.1",
+    "13.2",
+    "18.1",
+    "24.2"
+   ]
+  },
+  {
+   "note": "пустой выбор",
+   "anchor": "17.3",
+   "kept": [],
+   "status": "ok",
+   "added": [
+    "13.1",
+    "13.2",
+    "23.2",
+    "24.2"
+   ]
+  },
+  {
+   "note": "пустой выбор",
+   "anchor": "20.1",
+   "kept": [],
+   "status": "ok",
+   "added": [
+    "13.1",
+    "15.3",
+    "23.2",
+    "32.2"
+   ]
+  },
+  {
+   "note": "пустой выбор",
+   "anchor": "22.1",
+   "kept": [],
+   "status": "ok",
+   "added": [
+    "13.1",
+    "13.2",
+    "20.4",
+    "24.2"
+   ]
+  },
+  {
+   "note": "пустой выбор",
+   "anchor": "29.1",
+   "kept": [],
+   "status": "ok",
+   "added": [
+    "13.1",
+    "13.2",
+    "18.1",
+    "24.2"
+   ]
+  },
+  {
+   "note": "пустой выбор",
+   "anchor": "31.3",
+   "kept": [],
+   "status": "ok",
+   "added": [
+    "13.1",
+    "13.2",
+    "15.3",
+    "23.2"
+   ]
+  },
+  {
+   "note": "пустой выбор",
+   "anchor": "31.4",
+   "kept": [],
+   "status": "standalone",
+   "added": []
+  },
+  {
+   "note": "две из рекомендации",
+   "anchor": "1.2",
+   "kept": [
+    "14.1",
+    "13.2"
+   ],
+   "status": "ok",
+   "added": [
+    "20.4",
+    "23.2"
+   ]
+  },
+  {
+   "note": "две из рекомендации",
+   "anchor": "2.1",
+   "kept": [
+    "23.2",
+    "31.1"
+   ],
+   "status": "ok",
+   "added": [
+    "27.2"
+   ]
+  },
+  {
+   "note": "две из рекомендации",
+   "anchor": "2.2",
+   "kept": [
+    "23.1",
+    "17.1"
+   ],
+   "status": "ok",
+   "added": [
+    "13.2",
+    "23.2"
+   ]
+  },
+  {
+   "note": "две из рекомендации",
+   "anchor": "7.1",
+   "kept": [
+    "20.3",
+    "35.2"
+   ],
+   "status": "ok",
+   "added": []
+  },
+  {
+   "note": "две из рекомендации",
+   "anchor": "7.2",
+   "kept": [
+    "19.1",
+    "30.3"
+   ],
+   "status": "ok",
+   "added": []
+  },
+  {
+   "note": "две из рекомендации",
+   "anchor": "9.1",
+   "kept": [
+    "32.3",
+    "25.2"
+   ],
+   "status": "ok",
+   "added": []
+  },
+  {
+   "note": "две из рекомендации",
+   "anchor": "11.2",
+   "kept": [
+    "17.2",
+    "20.4"
+   ],
+   "status": "ok",
+   "added": [
+    "13.1",
+    "13.2"
+   ]
+  },
+  {
+   "note": "две из рекомендации",
+   "anchor": "12.2",
+   "kept": [
+    "14.2",
+    "21.3"
+   ],
+   "status": "ok",
+   "added": [
+    "13.1",
+    "23.2"
+   ]
+  },
+  {
+   "note": "оставлена площадка с IP = 0",
+   "anchor": "11.2",
+   "kept": [
+    "27.3"
+   ],
+   "status": "infeasible",
+   "added": []
+  },
+  {
+   "note": "опорная с IP = 1,00",
+   "anchor": "20.1",
+   "kept": [],
+   "status": "ok",
+   "added": [
+    "13.1",
+    "15.3",
+    "23.2",
+    "32.2"
+   ]
+  },
+  {
+   "note": "выбрано 4",
+   "anchor": "1.2",
+   "kept": [
+    "14.1",
+    "13.2",
+    "12.1",
+    "35.3"
+   ],
+   "status": "full",
+   "added": []
+  },
+  {
+   "note": "случайный выбор",
+   "anchor": "1.2",
+   "kept": [
+    "31.2"
+   ],
+   "status": "ok",
+   "added": [
+    "13.1",
+    "13.2",
+    "20.4"
+   ]
+  },
+  {
+   "note": "случайный выбор",
+   "anchor": "2.1",
+   "kept": [
+    "18.3",
+    "21.3"
+   ],
+   "status": "infeasible",
+   "added": []
+  },
+  {
+   "note": "случайный выбор",
+   "anchor": "29.1",
+   "kept": [
+    "21.2",
+    "25.1"
+   ],
+   "status": "ok",
+   "added": [
+    "13.2",
+    "24.2"
+   ]
+  },
+  {
+   "note": "случайный выбор",
+   "anchor": "12.2",
+   "kept": [
+    "18.2"
+   ],
+   "status": "ok",
+   "added": [
+    "13.1",
+    "13.2",
+    "24.2"
+   ]
+  },
+  {
+   "note": "случайный выбор",
+   "anchor": "11.2",
+   "kept": [
+    "8.2",
+    "12.1"
+   ],
+   "status": "ok",
+   "added": [
+    "13.2",
+    "24.2"
+   ]
+  },
+  {
+   "note": "случайный выбор",
+   "anchor": "17.3",
+   "kept": [
+    "20.3",
+    "11.1"
+   ],
+   "status": "infeasible",
+   "added": []
+  }
+ ]
+}

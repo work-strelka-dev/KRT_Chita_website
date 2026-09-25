@@ -1,0 +1,317 @@
+/* Скоринговая модель: стили исходной карты krt_map_updated.html (generate_map.py).
+   Панель оставлена без изменений по решению заказчика. */
+/* Страница: шапка сайта сверху, карта занимает остаток экрана */
+.scoring-page {
+  display: flex; flex-direction: column;
+  height: 100vh; overflow: hidden;
+}
+.scoring-page .site-header { position: relative; z-index: 1100; flex-shrink: 0; }
+
+.scoring-stage * { box-sizing: border-box; margin: 0; padding: 0; }
+
+.scoring-stage {
+  position: relative; flex: 1; min-height: 0;
+  font-family: var(--font); font-size: 13px;
+  background: #E9EDED; color: #1F2023;
+  overflow: hidden;
+}
+
+/* ── Боковая панель — плавающее «жидкое стекло» ──────────────── */
+#sidebar {
+  position: absolute; z-index: 1000;
+  top: 16px; left: 16px; bottom: 16px;
+  width: 310px; min-width: 260px; max-width: 360px;
+  display: flex; flex-direction: column;
+  border-radius: 20px;
+  overflow: hidden;
+  /* Полупрозрачная стеклянная подложка + блик по верхнему краю */
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.12) 22%, rgba(233,237,237,0.10) 100%),
+    rgba(233, 237, 237, 0.42);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  box-shadow:
+    0 18px 50px rgba(31, 32, 35, 0.22),
+    0 2px 8px rgba(31, 32, 35, 0.10),
+    inset 0 1px 0 rgba(255, 255, 255, 0.65),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.18);
+}
+
+#sidebar-header {
+  padding: 16px 18px 12px;
+  background: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  flex-shrink: 0;
+}
+#sidebar-header h1 {
+  font-family: var(--font);
+  font-size: 15px; font-weight: 700;
+  color: #028BA8; letter-spacing: 0.2px;
+  text-transform: uppercase;
+}
+#sidebar-header p {
+  font-size: 11px; color: #5f6466; margin-top: 3px;
+}
+
+/* ── Охват: весь город / площадки КРТ ─────────────────────── */
+#scope-tabs {
+  display:flex; gap:7px; padding:9px 16px 7px;
+  border-bottom:1px solid rgba(255,255,255,.35); flex-shrink:0;
+}
+.scope-tab {
+  flex:1; padding:7px 6px; border:1px solid rgba(198,208,208,.75);
+  border-radius:8px; background:rgba(248,252,252,.55); color:#5f6466;
+  font-size:11px; font-weight:600; cursor:pointer;
+}
+.scope-tab:hover, .scope-tab.active {
+  border-color:#028BA8; color:#028BA8; background:rgba(246,251,251,.92);
+}
+
+/* ── Профили оценки: город / инвестор / совместный ─────────── */
+#profile-tabs {
+  display: flex; gap: 6px;
+  padding: 9px 16px 7px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  flex-shrink: 0;
+}
+.profile-tab {
+  flex: 1; min-width: 0;
+  padding: 6px 5px;
+  border: 1px solid rgba(198, 208, 208, 0.75);
+  border-radius: 7px;
+  background: rgba(248, 252, 252, 0.55);
+  color: #5f6466;
+  font-size: 10px; font-weight: 600; white-space: nowrap;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+.profile-tab[data-profile="combined"] { flex-grow: 1.55; }
+.profile-tab:hover { border-color: #028BA8; color: #028BA8; }
+.profile-tab.active {
+  background: rgba(246, 251, 251, 0.90);
+  border-color: #028BA8;
+  color: #028BA8;
+}
+
+.krt-status-legend { margin:0; padding:0; background:transparent; }
+.krt-status-title { font-size:10px; font-weight:700; color:#5f6466; margin-bottom:5px; }
+.krt-status-row { display:flex; align-items:center; gap:7px; padding:2px 0; font-size:9px; }
+.krt-status-swatch {
+  width:18px; height:7px; border:1px solid #1f2937;
+  border-radius:3px; box-sizing:border-box; flex-shrink:0;
+}
+
+#section-label {
+  padding: 9px 16px 4px;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 1px; text-transform: uppercase;
+  color: #5f6466; flex-shrink: 0;
+}
+
+/* ── Список слоёв ───────────────────────────────────────────── */
+#layers-scroll { flex: 1; overflow-y: auto; }
+#layers-scroll::-webkit-scrollbar { width: 4px;}
+#layers-scroll::-webkit-scrollbar-track { background: #E9EDED; }
+#layers-scroll::-webkit-scrollbar-thumb { background: #028BA8; border-radius: 2px; }
+
+.layer-item {
+  padding: 7px 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.28);
+  transition: background 0.12s;
+  background: transparent;
+}
+.layer-item:hover { background: rgba(255, 255, 255, 0.30); }
+.layer-item.active {
+  background: rgba(255, 255, 255, 0.42);
+  border-left: 2px solid #028BA8;
+  padding-left: 16px;
+}
+.layer-item.active .layer-label { color: #028BA8; }
+
+.layer-item-header {
+  display: flex; align-items: flex-start; gap: 8px; cursor: pointer;
+}
+.layer-item-header input[type="radio"] {
+  accent-color: #028BA8; cursor: pointer; margin-top: 2px; flex-shrink: 0;
+}
+.layer-label {
+  flex: 1; min-width: 0;
+  display: flex; align-items: flex-start; gap: 6px;
+  font-size: 12px; line-height: 1.45; color: #1F2023;
+}
+.layer-label-text { flex: 1; min-width: 0; }
+.scale-chip {
+  display: inline-block; flex-shrink: 0;
+  margin-top: 1px; padding: 1px 7px;
+  border-radius: 999px;
+  font-size: 9px; line-height: 1.45; font-weight: 600;
+  white-space: nowrap;
+}
+.scale-chip.direct {
+  color: #27828C;
+  background: rgba(39, 130, 140, 0.11);
+  border: 1px solid rgba(39, 130, 140, 0.48);
+}
+.scale-chip.inverse {
+  color: #BF6B63;
+  background: rgba(191, 107, 99, 0.11);
+  border: 1px solid rgba(191, 107, 99, 0.48);
+}
+
+.integral-chip {
+  display: inline-block; margin-top: 4px; margin-left: 20px;
+  font-size: 10px; color: #028BA8;
+  background: rgba(2,139,168,0.10);
+  border: 1px solid rgba(2,139,168,0.20);
+  border-radius: 3px; padding: 1px 6px;
+}
+
+.weight-row {
+  display: flex; align-items: center;
+  margin-top: 5px; padding-left: 20px; gap: 6px;
+}
+.weight-label { font-size: 11px; color: #5f6466; white-space: nowrap; }
+.weight-input {
+  width: 54px; padding: 3px 6px;
+  background: #f8fcfc; border: 1px solid #c6d0d0;
+  border-radius: 4px; color: #1F2023; font-size: 12px; text-align: center;
+  -moz-appearance: textfield;
+}
+.weight-input::-webkit-inner-spin-button,
+.weight-input::-webkit-outer-spin-button { -webkit-appearance: none; }
+.weight-input:focus { outline: none; border-color: #028BA8; }
+.weight-step {
+  width: 22px; height: 22px; padding: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid #c6d0d0; border-radius: 4px;
+  background: #f8fcfc; color: #028BA8;
+  font-size: 15px; line-height: 1; cursor: pointer;
+}
+.weight-step:hover { border-color: #028BA8; background: #ffffff; }
+
+/* ── Легенда ────────────────────────────────────────────────── */
+#legend-panel {
+  padding: 10px 18px 13px;
+  background: transparent;
+  border-top: 1px solid rgba(255, 255, 255, 0.35);
+  flex-shrink: 0;
+}
+#legend-title {
+  font-size: 10px; color: #5f6466; margin-bottom: 5px;
+}
+#legend-bar {
+  height: 9px;
+  border-radius: 5px;
+  background: linear-gradient(
+    to right,
+    #2C4295 0%,
+    #62639D 11.11%,
+    #9889A1 22.22%,
+    #CCB29F 33.33%,
+    #FFDD94 44.44%,
+    #FEC700 55.56%,
+    #D7C33D 66.67%,
+    #A6BC6A 77.78%,
+    #62B38C 88.89%,
+    #00A7A7 100%
+  );
+}
+#legend-labels {
+  display: flex; justify-content: space-between;
+  font-size: 10px; color: #5f6466; margin-top: 3px;
+}
+#no-data-badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 10px; color: #5f6466; margin-top: 5px;
+}
+#no-data-badge span.swatch {
+  display: inline-block; width: 12px; height: 9px;
+  background: #c6d0d0; border-radius: 2px;
+}
+
+
+/* ── Переключатель подложки ─────────────────────────────────── */
+#basemap-panel {
+  padding: 8px 18px 12px;
+  background: transparent;
+  border-top: 1px solid rgba(255, 255, 255, 0.35);
+  flex-shrink: 0;
+}
+#basemap-label {
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 1px; text-transform: uppercase;
+  color: #5f6466; margin-bottom: 5px;
+}
+#basemap-btns { display: flex; gap: 6px; }
+.bm-btn {
+  flex: 1; padding: 4px 0;
+  background: rgba(248, 252, 252, 0.72); border: 1px solid rgba(198, 208, 208, 0.75);
+  border-radius: 4px; color: #5f6466;
+  font-size: 11px; cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+  backdrop-filter: blur(8px) saturate(140%);
+  -webkit-backdrop-filter: blur(8px) saturate(140%);
+}
+.bm-btn:hover { border-color: #028BA8; color: #028BA8; }
+.bm-btn.active {
+  background: #f6fbfb; border-color: #028BA8;
+  color: #028BA8; font-weight: 600;
+}
+
+/* ── Карта ──────────────────────────────────────────────────── */
+#map { position: absolute; inset: 0; z-index: 0; }
+
+#krt-export-top {
+  display: none; position: absolute; z-index: 1000;
+  top: 16px; right: 72px; padding: 8px 13px;
+  border: 1px solid #028BA8; border-radius: 8px;
+  background: rgba(248,252,252,.92); color: #028BA8;
+  font: 600 11px var(--font);
+  box-shadow: 0 4px 14px rgba(31,32,35,.16); cursor: pointer;
+  backdrop-filter: blur(10px);
+}
+#krt-export-top:hover { background:#ffffff; }
+#krt-export-top[hidden], #krt-legend[hidden], #profile-tabs[hidden], #score-legend[hidden] { display: none; }
+
+.leaflet-tooltip {
+  background: rgba(248, 252, 252, 0.78) !important;
+  border: 1px solid rgba(198, 208, 208, 0.7) !important;
+  border-radius: 10px !important;
+  color: #1F2023 !important;
+  padding: 8px 10px !important;
+  font-size: 12px !important;
+  backdrop-filter: blur(10px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(10px) saturate(140%) !important;
+  box-shadow: 0 8px 24px rgba(31, 32, 35, 0.16) !important;
+  white-space: normal !important;
+  width: max-content;
+  max-width: min(420px, calc(100vw - 40px));
+  overflow-wrap: anywhere;
+}
+.leaflet-tooltip::before { display: none !important; }
+
+.tt-title { font-weight: 600; color: #028BA8; margin-bottom: 4px; }
+.tt-integral { color: #028BA8; font-weight: 600; }
+.tt-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+.tt-row > span { min-width: 0; }
+.tt-row > span:last-child { max-width: 62%; text-align: right; overflow-wrap: anywhere; }
+.tt-val  { color: #1F2023; }
+.tt-row > .tt-score {
+  flex: 0 0 62px; width: 62px; max-width: 62px;
+  white-space: nowrap; overflow-wrap: normal !important;
+  text-align: right;
+}
+.tt-dim  { color: #5f6466; font-size: 11px; }
+  
+/* ── Бывшие inline-стили исходной разметки (CSP запрещает style="…") ── */
+.layer-label--integral { font-weight: 600; color: #028BA8; }
+.tt-name { max-width: 280px; margin-bottom: 6px; }
+.tt-block { margin-top: 5px; border-top: 1px solid #cbd5d8; padding-top: 4px; }
+.tt-block--hex { border-top-color: #1e3a5f; }
+.tt-row--rank { margin-top: 4px; padding-top: 4px; border-top: 1px solid #cbd5d8; }
+.map-error {
+  position: absolute; inset: 0; z-index: 2000;
+  display: flex; align-items: center; justify-content: center; padding: 24px;
+}
+.map-error div { max-width: 520px; padding: 16px; background: #b91c1c; color: #fff; font-size: 13px; border-radius: 8px; }

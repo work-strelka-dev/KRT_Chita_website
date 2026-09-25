@@ -1,0 +1,81 @@
+/* Дизайн-токены по прототипу (слайд 8). Источник: .claude/skills/krt-ui-design */
+
+/* Atlas Grotesk (Commercial Type): использование на сайте согласовано заказчиком, см. ARCHITECTURE.md, 14. */
+@font-face {
+  font-family: 'Atlas Grotesk';
+  src: url('../fonts/atlas-grotesk-regular.otf') format('opentype');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Atlas Grotesk';
+  src: url('../fonts/atlas-grotesk-medium.otf') format('opentype');
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Atlas Grotesk';
+  src: url('../fonts/atlas-grotesk-bold.otf') format('opentype');
+  font-weight: 700;
+  font-display: swap;
+}
+
+:root {
+  --ink: #00383D;
+  --ink-muted: #51676A;
+  --line: #B2C2C4;
+  --line-soft: #DCE5E6;
+  --surface: #FFFFFF;
+  --page: #F3F6F6;
+
+  --list-accent: #3D89A5;
+  --list-accent-text: #2A6A82; /* мелкий текст списков: контраст ≥ 4.5 */
+  --list-active: #77ACC0;
+  --list-hover: #EAF3F6;
+
+  --accent-rec: #E83273;
+  --accent-rec-text: #C0195A;   /* мелкий текст на розовом: контраст ≥ 4.5 */
+  --bg-rec: #FBDFE6;
+  --bg-rec-soft: #FEF7F9;
+
+  --accent-sel: #F9B000;
+  --accent-sel-text: #8A5800;  /* мелкий текст на жёлтом */
+  --bg-sel: #FFF0D6;
+  --bg-sel-soft: #FFFBF5;
+
+  --accent-opt: #3D89A5;       /* расчётная комбинация */
+  --accent-opt-text: #2A6A82;
+  --bg-opt: #DCEDF3;
+  --bg-opt-soft: #F4F9FB;
+
+  --danger: #B3261E;
+  --ok: #1E7A4C;
+
+  --map-free: #77C8D2;
+  --map-avar: #F192B0;
+  --map-redev: #748FC9;
+  --map-kept: #E8EAEB;
+  --map-restricted: #00383E;
+
+  --font: 'Atlas Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --text-xs: 0.75rem;
+  --text-sm: 0.8125rem;
+  --text-md: 0.9375rem;
+  --text-lg: 1.125rem;
+  --num-list: 1.5rem;
+  --num-metric: 1.875rem;
+  --num-anchor: 2.75rem;
+
+  --gap: 16px;
+  --page-gutter: 24px;
+  --pad: 20px;
+  --radius: 18px;
+  --radius-sm: 10px;
+  --focus: 0 0 0 3px var(--surface), 0 0 0 5px var(--list-accent);
+}
+
+@media (max-width: 767px) {
+  :root { --page-gutter: 16px; }
+}

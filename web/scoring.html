@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' https://api.mapbox.com https://*.tile.openstreetmap.org; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="strict-origin">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Скоринговая модель · КРТ Чита</title>
+  <link rel="icon" href="img/brand/favicon.webp" type="image/webp">
+  <link rel="preload" href="fonts/atlas-grotesk-regular.otf" as="font" type="font/otf" crossorigin>
+  <link rel="stylesheet" href="vendor/leaflet-1.9.4/leaflet.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/scoring.css">
+  <script src="vendor/leaflet-1.9.4/leaflet.js"></script>
+  <script type="module" src="js/scoring/main.js"></script>
+</head>
+<body class="scoring-page">
+  <header class="site-header">
+    <a class="site-logo-link" href="./" aria-label="КБ Стрелка: на главную">
+      <img class="site-logo" src="img/brand/kb-strelka.webp" width="720" height="71" alt="">
+    </a>
+    <nav class="site-nav" aria-label="Разделы">
+      <a class="nav-item" href="scoring.html" aria-current="page">Скоринговая модель</a>
+      <a class="nav-item" href="formation.html">Формирование площадки</a>
+    </nav>
+  </header>
+
+  <!-- Разметка исходной карты krt_map_updated.html без изменений структуры -->
+  <div class="scoring-stage">
+    <div id="sidebar">
+      <div id="sidebar-header">
+        <h1>КРТ Чита</h1>
+        <p>Оценка интересов</p>
+      </div>
+
+      <div id="scope-tabs"></div>
+      <div id="profile-tabs"></div>
+
+      <div id="section-label">Слои (название/тип шкалы)</div>
+
+      <div id="layers-scroll"></div>
+
+      <div id="legend-panel">
+        <div id="score-legend">
+          <div id="legend-title">Балл 0–10: низкий ↔ высокий</div>
+          <div id="legend-bar"></div>
+          <div id="legend-labels">
+            <span>0</span><span>5</span><span>10</span>
+          </div>
+          <div id="no-data-badge">
+            <span class="swatch"></span> нет данных
+          </div>
+        </div>
+        <div id="krt-legend" hidden></div>
+      </div>
+
+      <div id="basemap-panel">
+        <div id="basemap-label">Подложка</div>
+        <div id="basemap-btns">
+          <button class="bm-btn active" id="bm-mapbox" type="button" data-basemap="mapbox">Mapbox</button>
+          <button class="bm-btn" id="bm-osm" type="button" data-basemap="osm">OpenStreetMap</button>
+        </div>
+      </div>
+    </div><!-- /sidebar -->
+
+    <div id="map"></div>
+    <button id="krt-export-top" type="button" hidden>Выгрузить Excel</button>
+  </div>
+</body>
+</html>

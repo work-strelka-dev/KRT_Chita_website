@@ -1,0 +1,7 @@
+# В контекст сборки попадает только то, что нужно образу. Исходные Excel, GPKG,
+# PDF, .env и секреты на сервер не уходят.
+*
+!web/
+!docker/
+!deploy/nginx/
+web/data/scoring/map-config.json

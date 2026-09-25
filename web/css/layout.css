@@ -1,0 +1,157 @@
+/* Каркас страницы: шапка, пояснение, вкладки сценариев и сетка 3×3 (ARCHITECTURE.md, раздел 8).
+   Контент занимает всю ширину окна. */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: var(--text-md);
+  line-height: 1.4;
+}
+
+h1, h2, h3, p, ul, dl, dd { margin: 0; }
+ul { padding: 0; list-style: none; }
+
+.site-header, .intro, .scenario-bar, .grid, .page-foot { padding-inline: var(--page-gutter); }
+
+/* ---------- Шапка ---------- */
+
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 40px;
+  padding-block: 18px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.site-logo { display: block; width: auto; height: 22px; }
+
+.site-nav { display: flex; flex-wrap: wrap; gap: 4px 28px; }
+
+.nav-item {
+  padding-block: 4px;
+  border-bottom: 2px solid transparent;
+  color: var(--ink);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.nav-item[aria-current='page'] { border-bottom-color: var(--list-accent); }
+.nav-item:focus-visible { outline: none; box-shadow: var(--focus); }
+
+/* ---------- Пояснение методики ---------- */
+
+.intro { padding-block: 28px 20px; }
+
+h1 {
+  margin-bottom: 14px;
+  font-size: clamp(1.75rem, 1.2rem + 1.6vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.intro-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: 20px 40px;
+  align-items: start;
+}
+
+.intro-text { display: flex; flex-direction: column; gap: 8px; max-width: 90ch; color: var(--ink-muted); }
+
+.rules { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+
+.rules li {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 14px;
+  background: var(--surface);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-sm);
+  color: var(--ink-muted);
+  font-size: var(--text-xs);
+}
+
+.rules strong { color: var(--ink); font-size: var(--text-lg); font-weight: 700; font-variant-numeric: tabular-nums; }
+
+/* ---------- Вкладки сценариев ---------- */
+
+.scenario-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  min-height: 56px;
+  gap: 8px 24px;
+  margin-bottom: var(--gap);
+}
+
+/* Две строки зарезервированы: подсказки вкладок разной длины не сдвигают сетку */
+.scenario-hint {
+  flex: 1 1 320px;
+  min-height: calc(var(--text-sm) * 1.4 * 2);
+  color: var(--ink-muted);
+  font-size: var(--text-sm);
+  line-height: 1.4;
+}
+
+/* ---------- Сетка 3×3 ----------
+   Три равные колонки, три ряда. Списки и схема не раздвигают ряды:
+   их высоту задают плашки и нижний ряд, а длинные списки прокручиваются. */
+
+.grid {
+  display: grid;
+  gap: var(--gap);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: minmax(340px, auto) minmax(340px, auto) minmax(260px, auto);
+  grid-template-areas:
+    "anchors scheme top"
+    "add     scheme bottom"
+    "add     legend check";
+}
+
+.area-anchors { grid-area: anchors; }
+.area-add     { grid-area: add; }
+.area-scheme  { grid-area: scheme; }
+.area-top     { grid-area: top; }
+.area-bottom  { grid-area: bottom; }
+.area-legend  { grid-area: legend; }
+.area-check   { grid-area: check; }
+
+.page-foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  padding-block: 20px 32px;
+  color: var(--ink-muted);
+  font-size: var(--text-xs);
+}
+
+@media (max-width: 1199px) {
+  .intro-body { grid-template-columns: minmax(0, 1fr); }
+  .rules { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+    grid-template-rows: none;
+    grid-template-areas:
+      "anchors scheme"
+      "add     scheme"
+      "add     top"
+      "add     bottom"
+      "legend  check";
+  }
+}
+
+@media (max-width: 767px) {
+  .rules { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "anchors" "scheme" "top" "bottom" "add" "legend" "check";
+  }
+}

@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+build/
+node_modules/
+.env
+web/data/scoring/map-config.json
+secrets/
+.pytest_cache/
