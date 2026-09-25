@@ -23,9 +23,6 @@ services:
     cap_drop: [ALL]
     security_opt:
       - no-new-privileges:true
-    networks:
-      - default
-      - network-kb
 
   caddy:
     image: caddy:2.11.4-alpine
@@ -45,8 +42,3 @@ services:
 volumes:
   caddy_data:
   caddy_config:
-
-networks:
-  default:
-  network-kb:
-    external: true
