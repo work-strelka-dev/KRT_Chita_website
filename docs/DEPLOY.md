@@ -1,8 +1,8 @@
 # Развёртывание сайта КРТ Читы на сервере
 
 Сайт — статические страницы и данные, отдаваемые nginx из Docker-контейнера.
-Бэкенда и базы данных нет. Данные **конфиденциальные**: по умолчанию сайт
-закрыт паролем и без файла паролей не запускается.
+Бэкенда и базы данных нет. Контейнер не настраивает доступ: ограничение по
+паролю, VPN или IP-адресам задаётся на внешнем nginx.
 
 ## Что нужно на сервере
 
@@ -23,20 +23,7 @@ ssh user@server
 cd /opt && tar -xzf krt-chita-deploy-*.tar.gz && cd krt-chita
 ```
 
-## 2. Создать пароли
-
-Файл `secrets/htpasswd`, по строке на пользователя. Пароль шифруется bcrypt:
-
-```bash
-docker run --rm httpd:2.4-alpine htpasswd -nbB ivanova 'надёжный-пароль' >> secrets/htpasswd
-docker run --rm httpd:2.4-alpine htpasswd -nbB petrov  'другой-пароль'   >> secrets/htpasswd
-chmod 600 secrets/htpasswd
-```
-
-Сменить или удалить пользователя — отредактировать файл и выполнить
-`docker compose restart web`.
-
-## 3. Настроить `.env`
+## 2. Настроить `.env`
 
 ```bash
 cp .env.example .env
@@ -49,9 +36,8 @@ nano .env
 | `MAPBOX_STYLE` | Стиль подложки `пользователь/стиль` (стиль должен быть доступен этому токену) |
 | `KRT_DOMAIN` | Домен сайта, например `krt.example.ru` (только для варианта А) |
 | `KRT_PORT` | Порт на `127.0.0.1` для своего прокси (вариант Б), по умолчанию 8080 |
-| `KRT_PUBLIC` | `1` — открыть без пароля. Только по решению заказчика |
 
-## 4. Запустить
+## 3. Запустить
 
 **Вариант А — HTTPS силами контейнера (Caddy + Let's Encrypt):**
 
@@ -80,13 +66,13 @@ location / {
 Заголовки безопасности (CSP, HSTS, noindex и др.) выставляет сам контейнер,
 в прокси их дублировать не нужно.
 
-## 5. Проверить
+## 4. Проверить
 
 ```bash
 docker compose ps                                  # web: healthy
 curl -s  http://127.0.0.1:8080/healthz             # ok
-curl -sI http://127.0.0.1:8080/ | head -1          # 401 — пароль требуется
-curl -sI -u ivanova:пароль http://127.0.0.1:8080/scoring.html | grep -i content-security
+curl -sI http://127.0.0.1:8080/ | head -1          # 200
+curl -sI http://127.0.0.1:8080/scoring.html | grep -i content-security
 ```
 
 В браузере: главная, «Формирование площадки», «Скоринговая модель» — в
@@ -97,7 +83,7 @@ curl -sI -u ivanova:пароль http://127.0.0.1:8080/scoring.html | grep -i co
 Аналитик присылает новый архив:
 
 ```bash
-cd /opt && tar -xzf krt-chita-deploy-<новая-дата>.tar.gz   # secrets/ и .env сохраняются
+cd /opt && tar -xzf krt-chita-deploy-<новая-дата>.tar.gz   # .env сохраняется
 cd krt-chita && docker compose up -d --build               # или с --profile https
 ```
 
@@ -107,8 +93,8 @@ cd krt-chita && docker compose up -d --build               # или с --profile
 |---|---|
 | Образ | `docker/Dockerfile`: `nginxinc/nginx-unprivileged:1.30.5-alpine3.24`, внутри только `web/` и конфиг nginx |
 | Конфиг nginx | `deploy/nginx/*.conf` (общий с установкой без Docker) + `docker/default.conf` |
-| Старт контейнера | `docker/40-krt-runtime.sh`: проверяет пароли, создаёт конфиг подложки из `MAPBOX_TOKEN` |
+| Старт контейнера | `docker/40-krt-runtime.sh`: создаёт конфиг подложки из `MAPBOX_TOKEN` |
 | HTTPS | `docker/Caddyfile` (профиль `https`) |
 | Безопасность контейнера | не root, файловая система только для чтения, без Linux capabilities, `no-new-privileges` |
 
-Токен Mapbox и пароли в образ не попадают: они передаются при запуске.
+Токен Mapbox в образ не попадает: он передаётся при запуске.

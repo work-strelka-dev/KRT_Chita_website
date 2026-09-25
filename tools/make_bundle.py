@@ -61,9 +61,6 @@ def main() -> None:
             info.mode = 0o755 if rel in EXECUTABLE else 0o644
             info.mtime = int(path.stat().st_mtime)
             tar.addfile(info, io.BytesIO(data))
-        secrets = tarfile.TarInfo(f"{TOP}/secrets")
-        secrets.type, secrets.mode = tarfile.DIRTYPE, 0o700
-        tar.addfile(secrets)
     log.info("Архив: %s (%d файлов, %.1f МБ)", out.relative_to(ROOT), len(files), out.stat().st_size / 1e6)
 
 

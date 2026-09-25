@@ -10,7 +10,7 @@ LABEL org.opencontainers.image.title="krt-chita" \
 # Конфиг nginx: общие части из deploy/nginx/, сервер контейнера — docker/default.conf
 COPY deploy/nginx/ /etc/nginx/krt/
 COPY docker/default.conf /etc/nginx/conf.d/default.conf
-# При старте: доступ по паролю и конфиг подложки из переменных окружения
+# При старте: конфиг подложки из переменных окружения
 COPY --chmod=0755 docker/40-krt-runtime.sh /docker-entrypoint.d/40-krt-runtime.sh
 
 COPY web/ /usr/share/nginx/html/

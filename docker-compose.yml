@@ -14,9 +14,6 @@ services:
     environment:
       MAPBOX_TOKEN: ${MAPBOX_TOKEN:-}
       MAPBOX_STYLE: ${MAPBOX_STYLE:-okamidan/cmqupgwnh000b01s41y4r8ams}
-      KRT_PUBLIC: ${KRT_PUBLIC:-0}
-    secrets:
-      - htpasswd
     # Только с этой машины: снаружи сайт доступен через прокси
     ports:
       - "127.0.0.1:${KRT_PORT:-8080}:8080"
@@ -41,10 +38,6 @@ services:
       - ./docker/Caddyfile:/etc/caddy/Caddyfile:ro
       - caddy_data:/data
       - caddy_config:/config
-
-secrets:
-  htpasswd:
-    file: ./secrets/htpasswd
 
 volumes:
   caddy_data:
