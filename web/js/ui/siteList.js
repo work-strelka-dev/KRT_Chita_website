@@ -1,8 +1,9 @@
 // @ts-check
-// Списки выбора: опорные площадки (A1) и добавляемые / не вошедшие (A2:A3).
+// Списки выбора: опорные площадки (A1) и добавляемые (A2:A3).
+// Индекс в списках не показывается: он виден в плашках сценария.
 
 import { MAX_AREA_HA, isStandalone } from '../domain/combo.js';
-import { formatHa, formatIp } from '../domain/format.js';
+import { formatHa } from '../domain/format.js';
 import { el } from './dom.js';
 import { CATEGORIES, blockedShort } from './messages.js';
 
@@ -11,13 +12,13 @@ import { CATEGORIES, blockedShort } from './messages.js';
 /** @typedef {{ ok: true } | Blocked} Availability */
 
 /** @param {Site} site */
-const siteFacts = (site) => `${formatHa(site.areaHa)} га · IP ${formatIp(site.ip)}`;
+const siteArea = (site) => `${formatHa(site.areaHa)} га`;
 
 /**
  * @param {Object} p
  * @param {Site} p.site
  * @param {boolean} p.pressed
- * @param {string[]} p.notes  вторичные строки
+ * @param {string[]} p.notes  первая — основная строка, остальные — вторичные (адрес)
  * @param {Availability} [p.availability]
  * @param {() => void} p.onClick
  */
@@ -47,7 +48,10 @@ export function anchorItems(anchors, anchorId, onPick) {
   return anchors.map((site) => siteButton({
     site,
     pressed: site.id === anchorId,
-    notes: [siteFacts(site), isStandalone(site) ? `больше ${MAX_AREA_HA} га, самостоятельная` : ''].filter(Boolean),
+    notes: [
+      isStandalone(site) ? `${siteArea(site)} · больше ${MAX_AREA_HA} га, самостоятельная` : siteArea(site),
+      site.name,
+    ].filter(Boolean),
     onClick: () => onPick(site.id),
   }));
 }
@@ -57,21 +61,15 @@ export function anchorItems(anchors, anchorId, onPick) {
  * @param {Site[]} p.sites
  * @param {Set<string>} p.selected
  * @param {(site: Site) => Availability} p.availability
- * @param {Map<string, string>} p.assignedTo
- * @param {string | null} p.anchorId
  * @param {(id: string) => void} p.onToggle
  */
-export function addItems({ sites, selected, availability, assignedTo, anchorId, onToggle }) {
-  return sites.map((site) => {
-    const owner = assignedTo.get(site.id);
-    const notes = [`${CATEGORIES[site.category].label} · ${siteFacts(site)}`];
-    if (site.reason) notes.push(site.reason);
-    else if (owner && owner !== anchorId) notes.push(`в рекомендации у ${owner}`);
-    return siteButton({
-      site, pressed: selected.has(site.id), notes, availability: availability(site),
-      onClick: () => onToggle(site.id),
-    });
-  });
+export function addItems({ sites, selected, availability, onToggle }) {
+  return sites.map((site) => siteButton({
+    site, pressed: selected.has(site.id),
+    notes: [`${CATEGORIES[site.category].label} · ${siteArea(site)}`, site.name].filter(Boolean),
+    availability: availability(site),
+    onClick: () => onToggle(site.id),
+  }));
 }
 
 /**

@@ -15,7 +15,6 @@
  * @property {Site[]} sites
  * @property {Map<string, Site>} byId
  * @property {Map<string, Recommendation>} recommended
- * @property {Map<string, string>} assignedTo  неопорная → опорная в рекомендуемом наборе
  * @property {number} coverage
  * @property {number} total
  */
@@ -86,13 +85,11 @@ export async function loadDataset() {
   check(byId.size === sites.length, 'sites.json: повторяющиеся ID');
 
   const recommended = checkRecommended(recRaw, byId);
-  const assignedTo = new Map();
-  for (const [anchorId, rec] of recommended) rec.additional.forEach((id) => assignedTo.set(id, anchorId));
   check(Number.isInteger(recRaw.coverage) && Number.isInteger(recRaw.total), 'recommended.json: нет охвата');
 
   return {
     version: String(sitesRaw.version ?? ''),
-    sites, byId, recommended, assignedTo,
+    sites, byId, recommended,
     coverage: recRaw.coverage, total: recRaw.total,
   };
 }

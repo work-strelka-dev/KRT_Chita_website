@@ -8,8 +8,8 @@ import { optimizeCombo } from './domain/optimize.js';
 import { EMPTY_STATE, members, normalize, readScenario, readUrl, writeUrl } from './state.js';
 import { comboCard } from './ui/comboCard.js';
 import { el, renderInto } from './ui/dom.js';
-import { CATEGORIES, assignedMessage, blockedLong, droppedMessage } from './ui/messages.js';
-import { checkBody, schemeBody } from './ui/panels.js';
+import { CATEGORIES, blockedLong, droppedMessage } from './ui/messages.js';
+import { scenarioParams, schemeBody } from './ui/panels.js';
 import { addItems, anchorItems, switcher } from './ui/siteList.js';
 
 /** @typedef {import('./data.js').Dataset} Dataset */
@@ -23,18 +23,13 @@ const TOAST_MS = 7000;
 const FILTERS = [
   { key: 'all', label: 'Все' },
   ...['нейтральная площадка', 'обременение', 'вознаграждение'].map((key) => ({
-    key, label: `${CATEGORIES[key].filter} (${CATEGORIES[key].letter})`,
+    key, label: String(CATEGORIES[key].filter),
   })),
 ];
 const SCENARIOS = [
   { key: 'rec', label: 'Рекомендуемый сценарий' },
   { key: 'opt', label: 'Оптимизация сценария' },
 ];
-const SCENARIO_HINTS = {
-  rec: 'Соберите свою комбинацию и сравните её с рекомендуемой, заранее рассчитанной оптимизатором.',
-  opt: 'Оставьте важные для вас площадки и нажмите «Оптимизировать выбор»: мы дополним их по методике — '
-    + 'больше площадок, затем аварийный фонд ↑, новая жилая застройка ↑, прочий снос ↓.',
-};
 const NO_ANCHOR = 'Выберите опорную площадку в списке слева.';
 
 /** @param {string} id */
@@ -52,7 +47,7 @@ let scenario = 'rec';
 /** @type {{ key: string, result: OptimizeResult } | null} */
 let optimized = null;
 /** Состояние вида, не влияет на расчёт и не попадает в URL. */
-const view = { listTab: 'add', filter: 'all' };
+const view = { filter: 'all' };
 let toastTimer = 0;
 
 /** @param {string} message */
@@ -76,14 +71,6 @@ function availability(site) {
   return canAdd(members(state, data.byId), site);
 }
 
-/** @param {string[]} ids */
-function conflicts(ids) {
-  return ids.flatMap((id) => {
-    const owner = data.assignedTo.get(id);
-    return owner && owner !== state.anchorId ? [`${id} → ${owner}`] : [];
-  });
-}
-
 const actions = {
   /** @param {string} anchorId */
   pickAnchor(anchorId) {
@@ -103,8 +90,6 @@ const actions = {
       toast(blockedLong(site, check, state.anchorId));
       return;
     }
-    const owner = data.assignedTo.get(siteId);
-    if (owner && owner !== state.anchorId) toast(assignedMessage(siteId, owner));
     setState({ ...state, selectedIds: [...state.selectedIds, siteId] });
   },
   /** @param {string[]} selectedIds */
@@ -128,11 +113,6 @@ const actions = {
     writeUrl(state, scenario);
     render();
   },
-  /** @param {string} tab */
-  setListTab(tab) {
-    view.listTab = tab;
-    renderAddPanel();
-  },
   /** @param {string} filter */
   setFilter(filter) {
     view.filter = filter;
@@ -140,28 +120,20 @@ const actions = {
   },
 };
 
+/** Все присоединяемые (≤ 45 га), в том числе с индексом ниже 1: единый список без деления. */
 function renderAddPanel() {
-  const main = data.sites.filter((s) => s.addable && !s.reason);
-  const out = data.sites.filter((s) => s.reason);
-  const shown = view.listTab === 'out' ? out : main.filter((s) => view.filter === 'all' || s.category === view.filter);
+  const addable = data.sites.filter((s) => s.addable);
+  const shown = addable.filter((s) => view.filter === 'all' || s.category === view.filter);
 
   renderInto(node('add-controls'), [
     switcher({
-      kind: 'tab', label: 'Списки площадок', current: view.listTab, onChange: actions.setListTab, controls: 'add-list',
-      options: [{ key: 'add', label: 'Добавляемые', count: main.length }, { key: 'out', label: 'Не вошли', count: out.length }],
+      kind: 'chip', label: 'Категория', current: view.filter, onChange: actions.setFilter,
+      options: FILTERS.map((f) => ({ ...f, count: f.key === 'all' ? addable.length : addable.filter((s) => s.category === f.key).length })),
     }),
-    view.listTab === 'add'
-      ? switcher({
-        kind: 'chip', label: 'Категория', current: view.filter, onChange: actions.setFilter,
-        options: FILTERS.map((f) => ({ ...f, count: f.key === 'all' ? main.length : main.filter((s) => s.category === f.key).length })),
-      })
-      : el('p', { className: 'list-hint' },
-        `Площадки, не вошедшие в оптимальный набор. Те, что до ${MAX_AREA_HA} га, можно добавить, но индекс комбинации будет ≤ 1.`),
     !state.anchorId && el('p', { className: 'list-hint list-hint--strong' }, 'Сначала выберите опорную площадку.'),
   ]);
   renderInto(node('add-list'), addItems({
-    sites: shown, selected: new Set(state.selectedIds), availability,
-    assignedTo: data.assignedTo, anchorId: state.anchorId, onToggle: actions.toggleSite,
+    sites: shown, selected: new Set(state.selectedIds), availability, onToggle: actions.toggleSite,
   }));
 }
 
@@ -186,8 +158,11 @@ function applyButton(label, ids, key) {
   }, same ? 'Совпадает с выбранной' : label);
 }
 
-/** @param {string} titleId @param {Site | null} anchor @param {Site[]} selMembers @param {(HTMLElement | false)[]} extra */
-function selectedCard(titleId, anchor, selMembers, extra) {
+/**
+ * @param {string} titleId @param {Site | null} anchor @param {Site[]} selMembers
+ * @param {(HTMLElement | false)[]} extra @param {HTMLElement} [footer]
+ */
+function selectedCard(titleId, anchor, selMembers, extra, footer) {
   return comboCard({
     titleId, title: 'Выбранная комбинация',
     notes: [anchor ? selectedNote(anchor) : null],
@@ -199,6 +174,7 @@ function selectedCard(titleId, anchor, selMembers, extra) {
       className: 'button button--ghost', attrs: { type: 'button', 'data-key': 'reset' },
       on: { click: actions.reset },
     }, 'Сбросить выбор')],
+    footer,
   });
 }
 
@@ -219,16 +195,28 @@ function recommendedCard(anchor) {
   return { card, summary };
 }
 
-/** @param {Site | null} anchor */
+/**
+ * Параметры расчётной плашки без блока параметров сценария: он зависит от её итога.
+ * @param {Site | null} anchor
+ * @returns {{ props: Parameters<typeof comboCard>[0], summary: import('./domain/combo.js').ComboSummary | null }}
+ */
 function optimizedCard(anchor) {
   const titleId = 'card-bottom-title';
   const title = 'Расчётная комбинация';
   const current = optimized && optimized.key === stateKey(state) ? optimized.result : null;
-  /** @param {string} message */
-  const withMessage = (message) => ({ card: comboCard({ titleId, title, members: [], summary: null, message }), summary: null });
+  /** @param {string} message @param {HTMLElement[]} [buttons] */
+  const withMessage = (message, buttons = []) =>
+    ({ props: { titleId, title, members: [], summary: null, message, actions: buttons }, summary: null });
 
   if (!anchor) return withMessage(NO_ANCHOR);
-  if (!current) return withMessage('Нажмите «Оптимизировать выбор»: здесь появится комбинация с подобранными площадками.');
+  // Кнопка стоит в шапке расчётной плашки, пока для текущего выбора нет результата
+  if (!current) {
+    const optimizeButton = el('button', {
+      className: 'button button--primary', attrs: { type: 'button', 'data-key': 'optimize' },
+      on: { click: actions.optimize },
+    }, 'Оптимизировать выбор');
+    return withMessage('Нажмите «Оптимизировать выбор»: здесь появится комбинация с подобранными площадками.', [optimizeButton]);
+  }
   if (current.status === 'full') {
     return withMessage(`Оптимизировать нечего: выбрано ${MAX_ADDITIONAL} площадки, это максимум. `
       + 'Оставьте важные для вас площадки, остальные уберите, и мы подберём более подходящие.');
@@ -245,19 +233,17 @@ function optimizedCard(anchor) {
   const ids = [...state.selectedIds, ...addedIds];
   const optMembers = members({ anchorId: anchor.id, selectedIds: ids }, data.byId);
   const summary = summarize(optMembers);
-  const clashes = conflicts(addedIds);
   return {
-    card: comboCard({
+    props: {
       titleId, title,
       notes: [
         addedIds.length
           ? `Добавлено по методике: ${addedIds.join(', ')}.`
           : `Добавить нечего: ни одна площадка не улучшает выбор в пределах ${MAX_AREA_HA} га и индекса больше 1.`,
-        clashes.length ? `В рекомендации за другими опорными: ${clashes.join('; ')}.` : null,
       ],
       members: optMembers, summary, newIds: new Set(addedIds),
       actions: [applyButton('Перенести в выбранную', addedIds.length ? ids : null, 'apply-opt')],
-    }),
+    },
     summary,
   };
 }
@@ -278,20 +264,15 @@ function renderCards() {
 
   if (scenario === 'rec') {
     const rec = recommendedCard(anchor);
+    const params = scenarioParams(selSummary, { title: 'Выбранная минус рекомендуемая', base: rec.summary, target: selSummary });
     renderCard(top, 'rec', rec.card);
-    renderCard(bottom, 'sel', selectedCard('card-bottom-title', anchor, selMembers, []));
-    renderInto(node('check-body'), checkBody(selSummary,
-      { title: 'Выбранная минус рекомендуемая', base: rec.summary, target: selSummary }));
+    renderCard(bottom, 'sel', selectedCard('card-bottom-title', anchor, selMembers, [], params));
   } else {
     const opt = optimizedCard(anchor);
-    const optimizeButton = el('button', {
-      className: 'button button--primary', attrs: { type: 'button', disabled: !anchor, 'data-key': 'optimize' },
-      on: { click: actions.optimize },
-    }, 'Оптимизировать выбор');
-    renderCard(top, 'sel', selectedCard('card-top-title', anchor, selMembers, [optimizeButton]));
-    renderCard(bottom, 'opt', opt.card);
-    renderInto(node('check-body'), checkBody(selSummary,
-      { title: 'Расчётная минус выбранная', base: selSummary, target: opt.summary }));
+    // Блок стоит в расчётной плашке: правила и эффекты — по расчётной комбинации
+    const params = scenarioParams(opt.summary, { title: 'Расчётная минус выбранная', base: selSummary, target: opt.summary });
+    renderCard(top, 'sel', selectedCard('card-top-title', anchor, selMembers, []));
+    renderCard(bottom, 'opt', comboCard({ ...opt.props, footer: params }));
   }
   renderInto(node('scheme-body'), schemeBody(anchor));
 }
@@ -301,7 +282,6 @@ function renderScenario() {
     kind: 'tab', label: 'Сценарий', current: scenario, onChange: actions.setScenario, controls: 'app',
     options: SCENARIOS, className: 'tabs--scenario',
   })]);
-  node('scenario-hint').textContent = SCENARIO_HINTS[scenario];
 }
 
 function render() {
@@ -321,7 +301,16 @@ function showError(error) {
     el('p', { className: 'error-details' }, `Подробности: ${details}.`))]);
 }
 
+/** Справка по кнопке «?»: закрывается крестиком, Esc и кликом по фону. */
+function initHelp() {
+  const help = /** @type {HTMLDialogElement} */ (node('help'));
+  node('help-open').addEventListener('click', () => help.showModal());
+  node('help-close').addEventListener('click', () => help.close());
+  help.addEventListener('click', (event) => { if (event.target === help) help.close(); });
+}
+
 async function start() {
+  initHelp();
   try {
     data = await loadDataset();
   } catch (error) {

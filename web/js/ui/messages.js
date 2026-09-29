@@ -38,11 +38,6 @@ export function droppedMessage(ids, anchorId) {
   return `${noun} ${ids.join(', ')}: с опорной ${anchorId} не помещаются в ${MAX_AREA_HA} га.`;
 }
 
-/** @param {string} siteId @param {string} anchorId */
-export function assignedMessage(siteId, anchorId) {
-  return `В рекомендуемом наборе ${siteId} закреплена за опорной ${anchorId}.`;
-}
-
 /**
  * Категории: подпись в строке списка, фильтр и буква для миниатюр плашек.
  * Опорной буква не нужна: в миниатюрах она не показывается.
