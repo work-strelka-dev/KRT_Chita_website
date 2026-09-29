@@ -2,7 +2,7 @@
 // Схема площадки с масштабной линейкой. Все схемы в одном масштабе, но обрезаны
 // по содержимому, поэтому линейка обязательна: иначе 0,5 га выглядят как 50 га.
 
-import { formatHa, formatMeters } from '../domain/format.js';
+import { formatMeters } from '../domain/format.js';
 import { el } from './dom.js';
 
 /** @typedef {import('../domain/combo.js').Site} Site */
@@ -35,8 +35,7 @@ export function siteFigure(site, variant) {
       el('div', { className: 'scalebar' },
         el('span', { className: 'scalebar-bar', attrs: { 'aria-hidden': 'true' }, style: { width: `${(lengthM / site.imageWidthM) * 100}%` } }),
         el('span', { className: 'visually-hidden' }, 'Масштаб: '),
-        el('span', {}, formatMeters(lengthM)),
-        el('span', { className: 'figure-area' }, `${formatHa(site.areaHa)} га`)),
+        el('span', {}, formatMeters(lengthM))),
     ),
   );
 }

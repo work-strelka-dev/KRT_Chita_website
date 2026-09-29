@@ -11,6 +11,7 @@ sys.path.insert(0, str(ROOT))
 
 SITES_XLSX = ROOT / "input_data" / "параметры площадок(1).xlsx"
 RESULT_XLSX = ROOT / "output" / "KRT_оптимизация_результат.xlsx"
+NAMES_XLSX = ROOT / "input_data" / "Наименование площадок.xlsx"
 PARCELS_DIR = ROOT / "parcels"
 WEB_DIR = ROOT / "web"
 IMG_DIR = WEB_DIR / "img" / "parcels"

@@ -14,10 +14,10 @@ body {
   line-height: 1.4;
 }
 
-h1, h2, h3, p, ul, dl, dd { margin: 0; }
+h1, h2, h3, h4, p, ul, dl, dd { margin: 0; }
 ul { padding: 0; list-style: none; }
 
-.site-header, .intro, .scenario-bar, .grid, .page-foot { padding-inline: var(--page-gutter); }
+.site-header, .scenario-bar, .grid, .page-foot { padding-inline: var(--page-gutter); }
 
 /* ---------- Шапка ---------- */
 
@@ -46,40 +46,17 @@ ul { padding: 0; list-style: none; }
 .nav-item[aria-current='page'] { border-bottom-color: var(--list-accent); }
 .nav-item:focus-visible { outline: none; box-shadow: var(--focus); }
 
-/* ---------- Пояснение методики ---------- */
-
-.intro { padding-block: 28px 20px; }
-
-h1 {
-  margin-bottom: 14px;
-  font-size: clamp(1.75rem, 1.2rem + 1.6vw, 2.5rem);
-  font-weight: 700;
-  line-height: 1.1;
-}
-
-.intro-body {
-  display: grid;
-  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
-  gap: 20px 40px;
-  align-items: start;
-}
-
-.intro-text { display: flex; flex-direction: column; gap: 8px; max-width: 90ch; color: var(--ink-muted); }
-
-.rules { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
-
-.rules li {
-  display: flex;
-  flex-direction: column;
-  padding: 10px 14px;
-  background: var(--surface);
-  border: 1px solid var(--line-soft);
-  border-radius: var(--radius-sm);
+/* Пометки справа в шапке: «Конфиденциально», «Прототип» — простой текст */
+.header-mark, .prototype-mark {
+  margin-left: auto;
   color: var(--ink-muted);
   font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
-.rules strong { color: var(--ink); font-size: var(--text-lg); font-weight: 700; font-variant-numeric: tabular-nums; }
+.header-mark + .prototype-mark { margin-left: 0; }
 
 /* ---------- Вкладки сценариев ---------- */
 
@@ -89,31 +66,23 @@ h1 {
   align-items: center;
   min-height: 56px;
   gap: 8px 24px;
-  margin-bottom: var(--gap);
-}
-
-/* Две строки зарезервированы: подсказки вкладок разной длины не сдвигают сетку */
-.scenario-hint {
-  flex: 1 1 320px;
-  min-height: calc(var(--text-sm) * 1.4 * 2);
-  color: var(--ink-muted);
-  font-size: var(--text-sm);
-  line-height: 1.4;
+  padding-block: 16px;
 }
 
 /* ---------- Сетка 3×3 ----------
    Три равные колонки, три ряда. Списки и схема не раздвигают ряды:
-   их высоту задают плашки и нижний ряд, а длинные списки прокручиваются. */
+   их высоту задают плашки, а длинные списки прокручиваются.
+   Нижняя плашка вместе с параметрами сценариев занимает C2:C3. */
 
 .grid {
   display: grid;
   gap: var(--gap);
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  grid-template-rows: minmax(340px, auto) minmax(340px, auto) minmax(260px, auto);
+  grid-template-rows: auto minmax(0, 1fr) auto;
   grid-template-areas:
     "anchors scheme top"
     "add     scheme bottom"
-    "add     legend check";
+    "add     legend bottom";
 }
 
 .area-anchors { grid-area: anchors; }
@@ -122,20 +91,17 @@ h1 {
 .area-top     { grid-area: top; }
 .area-bottom  { grid-area: bottom; }
 .area-legend  { grid-area: legend; }
-.area-check   { grid-area: check; }
 
 .page-foot {
   display: flex;
   flex-wrap: wrap;
   gap: 8px 24px;
-  padding-block: 20px 32px;
+  padding-block: 12px 16px;
   color: var(--ink-muted);
   font-size: var(--text-xs);
 }
 
 @media (max-width: 1199px) {
-  .intro-body { grid-template-columns: minmax(0, 1fr); }
-  .rules { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .grid {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
     grid-template-rows: none;
@@ -143,15 +109,97 @@ h1 {
       "anchors scheme"
       "add     scheme"
       "add     top"
-      "add     bottom"
-      "legend  check";
+      "legend  bottom";
   }
 }
 
 @media (max-width: 767px) {
-  .rules { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .grid {
     grid-template-columns: minmax(0, 1fr);
-    grid-template-areas: "anchors" "scheme" "top" "bottom" "add" "legend" "check";
+    grid-template-areas: "anchors" "scheme" "top" "bottom" "add" "legend";
   }
+}
+
+/* ---------- Справка (кнопка «?») ---------- */
+
+.help-button {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  margin-left: auto;
+  padding: 0;
+  background: var(--surface);
+  border: 1.5px solid var(--ink);
+  border-radius: 50%;
+  color: var(--ink);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.help-button:hover { background: var(--ink); color: var(--surface); }
+
+.help {
+  width: min(720px, calc(100vw - 32px));
+  max-height: calc(100dvh - 48px);
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: 0 16px 48px rgb(0 56 61 / 0.25);
+}
+
+.help::backdrop { background: rgb(0 56 61 / 0.35); }
+
+.help-inner { display: flex; flex-direction: column; gap: 12px; padding: 24px 28px 28px; color: var(--ink-muted); }
+
+.help-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+.help-head h2 { color: var(--ink); font-size: 1.5rem; font-weight: 700; line-height: 1.15; }
+
+.help-close {
+  position: relative;
+  flex: none;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.help-close::before,
+.help-close::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 1.5px;
+  background: var(--ink);
+}
+
+.help-close::before { transform: translate(-50%, -50%) rotate(45deg); }
+.help-close::after { transform: translate(-50%, -50%) rotate(-45deg); }
+.help-close:hover { border-color: var(--ink); }
+
+.rules { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-top: 4px; }
+
+.rules li {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 14px;
+  background: var(--page);
+  border-radius: var(--radius-sm);
+  color: var(--ink-muted);
+  font-size: var(--text-xs);
+}
+
+.rules strong { color: var(--ink); font-size: var(--text-lg); font-weight: 700; font-variant-numeric: tabular-nums; }
+
+@media (max-width: 767px) {
+  .rules { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }

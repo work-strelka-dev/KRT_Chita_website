@@ -24,37 +24,47 @@
       <a class="nav-item" href="scoring.html">Скоринговая модель</a>
       <a class="nav-item" href="formation.html" aria-current="page">Формирование площадки</a>
     </nav>
+    <span class="confidential header-mark">Конфиденциально</span>
+    <span class="prototype-mark">Прототип</span>
   </header>
 
-  <section class="intro" aria-labelledby="h-page">
-    <h1 id="h-page">Формирование многоконтурной площадки</h1>
-    <div class="intro-body">
-      <div class="intro-text">
-        <p>
-          Площадки КРТ объединяются в&nbsp;многоконтурные комбинации: одна опорная площадка и&nbsp;до&nbsp;четырёх
-          присоединённых, суммарно не&nbsp;больше 45&nbsp;га. Комбинация допустима, если её&nbsp;интегральный индекс
-          инвестиционного потенциала (средний по&nbsp;площади индекс всех площадок) строго больше&nbsp;1.
-        </p>
-        <p>
-          Рекомендуемый сценарий&nbsp;— единый набор комбинаций без повторов площадок. Сначала охвачено максимум
-          площадок, затем комбинации сделаны компактнее, после чего максимизированы расселение аварийного жилья
-          и&nbsp;новая жилая застройка при минимуме прочего сноса. Площадки больше 45&nbsp;га с&nbsp;индексом выше&nbsp;1
-          реализуются самостоятельно.
-        </p>
-      </div>
-      <ul class="rules" aria-label="Правила методики">
-        <li><strong>≤ 45 га</strong> площадь комбинации</li>
-        <li><strong>1–5</strong> площадок, одна опорная</li>
-        <li><strong>IP &gt; 1</strong> интегральный индекс</li>
-        <li><strong id="coverage">68 из 80</strong> площадок в сценарии</li>
-      </ul>
-    </div>
-  </section>
-
   <div class="scenario-bar">
+    <h1 id="h-page" class="visually-hidden">Формирование многоконтурной площадки</h1>
     <div id="scenario-tabs"></div>
-    <p id="scenario-hint" class="scenario-hint"></p>
+    <button id="help-open" class="help-button" type="button" aria-haspopup="dialog" aria-controls="help"
+      title="Справка о методике">?<span class="visually-hidden">Справка о методике</span></button>
   </div>
+
+  <dialog id="help" class="help" aria-labelledby="h-help">
+    <div class="help-inner">
+    <div class="help-head">
+      <h2 id="h-help">Формирование многоконтурной площадки</h2>
+      <button id="help-close" class="help-close" type="button" aria-label="Закрыть справку"></button>
+    </div>
+    <p>
+      Площадки КРТ объединяются в&nbsp;многоконтурные комбинации: одна опорная площадка и&nbsp;до&nbsp;четырёх
+      присоединённых, суммарно не&nbsp;больше 45&nbsp;га. Комбинация допустима, если её&nbsp;интегральный индекс
+      инвестиционного потенциала (средний по&nbsp;площади индекс всех площадок) строго больше&nbsp;1.
+    </p>
+    <p>
+      Рекомендуемый сценарий&nbsp;— единый набор комбинаций без повторов площадок. Сначала охвачено максимум
+      площадок, затем комбинации сделаны компактнее, после чего максимизированы расселение аварийного жилья
+      и&nbsp;новая жилая застройка при минимуме прочего сноса. Площадки больше 45&nbsp;га с&nbsp;индексом выше&nbsp;1
+      реализуются самостоятельно.
+    </p>
+    <p>
+      Вкладка «Рекомендуемый сценарий» сравнивает вашу комбинацию с&nbsp;рекомендуемой. На&nbsp;вкладке
+      «Оптимизация сценария» оставьте важные для вас площадки и&nbsp;нажмите «Оптимизировать выбор»: мы&nbsp;дополним
+      их&nbsp;по&nbsp;методике&nbsp;— больше площадок, затем аварийный фонд&nbsp;↑, новая жилая застройка&nbsp;↑, прочий снос&nbsp;↓.
+    </p>
+    <ul class="rules" aria-label="Правила методики">
+      <li><strong>≤ 45 га</strong> площадь комбинации</li>
+      <li><strong>1–5</strong> площадок, одна опорная</li>
+      <li><strong>IP &gt; 1</strong> индекс инвестиционного потенциала, строго</li>
+      <li><strong id="coverage">68 из 80</strong> площадок в сценарии</li>
+    </ul>
+    </div>
+  </dialog>
 
   <main id="app" class="grid">
     <section class="panel area-anchors" aria-labelledby="h-anchors">
@@ -65,7 +75,7 @@
     <section class="panel area-add" aria-labelledby="h-add">
       <h2 id="h-add" class="panel-title panel-title--list">Добавьте площадки</h2>
       <div id="add-controls" class="add-controls"></div>
-      <ul id="add-list" class="site-list site-list--scroll" aria-labelledby="h-add" role="tabpanel"></ul>
+      <ul id="add-list" class="site-list site-list--scroll" aria-labelledby="h-add"></ul>
     </section>
 
     <section class="panel area-scheme" aria-labelledby="h-scheme">
@@ -97,17 +107,11 @@
         <li><abbr class="tile-letter">В</abbr>Вознаграждение</li>
       </ul>
     </section>
-
-    <section class="panel area-check" aria-labelledby="h-check">
-      <h2 id="h-check" class="panel-title">Проверка методики</h2>
-      <div id="check-body"></div>
-    </section>
   </main>
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
   <footer class="page-foot">
-    <span class="confidential">Конфиденциально</span>
     <span id="data-version"></span>
   </footer>
 </body>

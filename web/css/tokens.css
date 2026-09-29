@@ -62,14 +62,14 @@
   --font: 'Atlas Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --text-xs: 0.75rem;
   --text-sm: 0.8125rem;
-  --text-md: 0.9375rem;
-  --text-lg: 1.125rem;
-  --num-list: 1.5rem;
-  --num-metric: 1.875rem;
-  --num-anchor: 2.75rem;
+  --text-md: 0.875rem;
+  --text-lg: 1rem;
+  --num-list: 1.25rem;
+  --num-metric: 1.5rem;
+  --num-anchor: 2rem;
 
   --gap: 16px;
-  --page-gutter: 24px;
+  --page-gutter: 40px;
   --pad: 20px;
   --radius: 18px;
   --radius-sm: 10px;

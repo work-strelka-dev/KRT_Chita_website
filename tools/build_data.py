@@ -14,7 +14,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from common import (DATA_DIR, GOLDEN_CASES, IMAGES_MANIFEST, RESULT_XLSX, SITES_XLSX,
+from common import (DATA_DIR, GOLDEN_CASES, IMAGES_MANIFEST, NAMES_XLSX, RESULT_XLSX, SITES_XLSX,
                     BuildError, id_sort_key, log, setup_logging)
 from krt_optimizer.candidate_generator import CandidateGenerator
 from krt_optimizer.data_repository import REQUIRED_COLUMNS, SiteRepository
@@ -45,6 +45,15 @@ def split_ids(cell: object) -> list[str]:
 def load_grad() -> dict[str, float]:
     df = pd.read_excel(SITES_XLSX, usecols=[REQUIRED_COLUMNS["id"], GRAD_COLUMN])
     return {f"{float(i):.1f}": float(g) for i, g in zip(df[REQUIRED_COLUMNS["id"]], df[GRAD_COLUMN])}
+
+
+def load_names(site_ids: set[str]) -> dict[str, str]:
+    """Адреса площадок: ровно по одному на каждую площадку из Excel параметров."""
+    df = pd.read_excel(NAMES_XLSX, usecols=[REQUIRED_COLUMNS["id"], "Наименование"])
+    names = {f"{float(i):.1f}": " ".join(str(n).split()) for i, n in zip(df[REQUIRED_COLUMNS["id"]], df["Наименование"])}
+    if len(names) != len(df) or set(names) != site_ids or not all(names.values()):
+        raise BuildError(f"{NAMES_XLSX.name}: повторы, пустые адреса или расхождение ID {sorted(set(names) ^ site_ids)}")
+    return names
 
 
 def combo(sites: dict[str, Site], anchor_id: str, additional: list[str]) -> Candidate:
@@ -97,10 +106,10 @@ def read_not_included(sites: dict[str, Site]) -> dict[str, str]:
     return dict(sorted(reasons.items(), key=lambda kv: id_sort_key(kv[0])))
 
 
-def site_json(s: Site, grad: float, images: dict, reason: str | None) -> dict:
+def site_json(s: Site, name: str, grad: float, images: dict, reason: str | None) -> dict:
     img = images[s.site_id]
     return {
-        "id": s.site_id, "name": "", "category": s.category.value,
+        "id": s.site_id, "name": name, "category": s.category.value,
         "areaHa": s.area_ga, "ip": s.ip,
         "avarM2": whole(s.avar_fond), "gradM2": whole(grad),
         "sppNewM2": whole(s.sp_novoy_zhiloy), "sppDemolM2": whole(s.sp_prochey_snos),
@@ -197,6 +206,7 @@ def main() -> None:
         raise BuildError(f"Картинки не совпадают с Excel: {sorted(set(images) ^ set(sites))}")
 
     grad = load_grad()
+    names = load_names(set(sites))
     recommended = read_recommended(sites)
     not_included = read_not_included(sites)
     covered = {i for a, r in recommended.items() for i in [a, *r["additional"]]}
@@ -208,7 +218,7 @@ def main() -> None:
     today = date.today().isoformat()
     write_json(DATA_DIR / "sites.json", {
         "version": today, "source": SITES_XLSX.name,
-        "sites": [site_json(s, grad[s.site_id], images, not_included.get(s.site_id)) for s in site_list],
+        "sites": [site_json(s, names[s.site_id], grad[s.site_id], images, not_included.get(s.site_id)) for s in site_list],
     })
     write_json(DATA_DIR / "recommended.json", {
         "source": RESULT_XLSX.name, "coverage": coverage, "total": len(sites),
