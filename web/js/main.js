@@ -47,7 +47,7 @@ let scenario = 'rec';
 /** @type {{ key: string, result: OptimizeResult } | null} */
 let optimized = null;
 /** Состояние вида, не влияет на расчёт и не попадает в URL. */
-const view = { filter: 'all' };
+const view = { filter: 'all', paramsOpen: false };
 let toastTimer = 0;
 
 /** @param {string} message */
@@ -117,6 +117,10 @@ const actions = {
   setFilter(filter) {
     view.filter = filter;
     renderAddPanel();
+  },
+  toggleParams() {
+    view.paramsOpen = !view.paramsOpen;
+    renderCards();
   },
 };
 
@@ -225,7 +229,7 @@ function optimizedCard(anchor) {
     return withMessage(`Оптимизировать нечего: опорная ${anchor.id} больше ${MAX_AREA_HA} га и рассматривается самостоятельно.`);
   }
   if (current.status === 'infeasible') {
-    return withMessage(`Подобрать не получилось: с оставленными площадками индекс не поднимается выше 1 в пределах ${MAX_AREA_HA} га. `
+    return withMessage(`Подобрать не получилось: с оставленными площадками индекс не поднимается выше 0 в пределах ${MAX_AREA_HA} га. `
       + 'Уберите площадку с низким индексом и попробуйте снова.');
   }
 
@@ -239,7 +243,7 @@ function optimizedCard(anchor) {
       notes: [
         addedIds.length
           ? `Добавлено по методике: ${addedIds.join(', ')}.`
-          : `Добавить нечего: ни одна площадка не улучшает выбор в пределах ${MAX_AREA_HA} га и индекса больше 1.`,
+          : `Добавить нечего: ни одна площадка не улучшает выбор в пределах ${MAX_AREA_HA} га и индекса больше 0.`,
       ],
       members: optMembers, summary, newIds: new Set(addedIds),
       actions: [applyButton('Перенести в выбранную', addedIds.length ? ids : null, 'apply-opt')],
@@ -255,6 +259,8 @@ function renderCard(section, variant, content) {
   renderInto(section, content);
 }
 
+const paramsFold = () => ({ open: view.paramsOpen, onToggle: actions.toggleParams });
+
 function renderCards() {
   const anchor = state.anchorId ? data.byId.get(state.anchorId) ?? null : null;
   const selMembers = members(state, data.byId);
@@ -264,13 +270,13 @@ function renderCards() {
 
   if (scenario === 'rec') {
     const rec = recommendedCard(anchor);
-    const params = scenarioParams(selSummary, { title: 'Выбранная минус рекомендуемая', base: rec.summary, target: selSummary });
+    const params = scenarioParams(selSummary, { title: 'Выбранная минус рекомендуемая', base: rec.summary, target: selSummary }, paramsFold());
     renderCard(top, 'rec', rec.card);
     renderCard(bottom, 'sel', selectedCard('card-bottom-title', anchor, selMembers, [], params));
   } else {
     const opt = optimizedCard(anchor);
     // Блок стоит в расчётной плашке: правила и эффекты — по расчётной комбинации
-    const params = scenarioParams(opt.summary, { title: 'Расчётная минус выбранная', base: selSummary, target: opt.summary });
+    const params = scenarioParams(opt.summary, { title: 'Расчётная минус выбранная', base: selSummary, target: opt.summary }, paramsFold());
     renderCard(top, 'sel', selectedCard('card-top-title', anchor, selMembers, []));
     renderCard(bottom, 'opt', comboCard({ ...opt.props, footer: params }));
   }
@@ -309,15 +315,27 @@ function initHelp() {
   help.addEventListener('click', (event) => { if (event.target === help) help.close(); });
 }
 
+/** Статичные сворачиваемые блоки («Добавьте площадки», легенда): свёрнуты при открытии. */
+function initFolds() {
+  for (const toggle of document.querySelectorAll('.fold-toggle[aria-controls]')) {
+    const body = node(/** @type {string} */ (toggle.getAttribute('aria-controls')));
+    toggle.addEventListener('click', () => {
+      const open = toggle.getAttribute('aria-expanded') !== 'true';
+      toggle.setAttribute('aria-expanded', String(open));
+      body.hidden = !open;
+    });
+  }
+}
+
 async function start() {
   initHelp();
+  initFolds();
   try {
     data = await loadDataset();
   } catch (error) {
     showError(error);
     return;
   }
-  node('data-version').textContent = data.version ? `Данные от ${new Date(data.version).toLocaleDateString('ru-RU')}` : '';
   node('coverage').textContent = `${data.coverage} из ${data.total}`;
   state = readUrl(location.search, data.byId);
   scenario = readScenario(location.search);

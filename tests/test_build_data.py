@@ -36,8 +36,8 @@ def as_site(s: dict) -> Site:
 
 def test_counts(sites):
     assert len(sites) == 80
-    assert sum(s["category"] == "опорная" for s in sites.values()) == 17
-    assert sum(s["addable"] and not s["reason"] for s in sites.values()) == 43
+    assert sum(s["category"] == "опорная" for s in sites.values()) == 18
+    assert sum(s["addable"] and not s["reason"] for s in sites.values()) == 42
     assert sum(bool(s["reason"]) for s in sites.values()) == 12
     assert sum(s["addable"] and bool(s["reason"]) for s in sites.values()) == 5
 
@@ -51,7 +51,7 @@ def test_every_site_has_images(sites):
 
 def test_recommendations_pass_methodology(sites, recommended):
     assert recommended["coverage"] == 68
-    assert len(recommended["byAnchor"]) == 17
+    assert len(recommended["byAnchor"]) == 18
     assert recommended["byAnchor"]["31.4"] == {"type": "standalone", "additional": []}
     seen: set[str] = set()
     for anchor, rec in recommended["byAnchor"].items():

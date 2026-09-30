@@ -24,7 +24,7 @@ from rules import MAX_AREA_TENTHS, area_fits, area_tenths, ip_valid_int
 
 GRAD_COLUMN = "Градпотенциал, кв.м"
 REGULAR, STANDALONE = "Комбинация", "Самостоятельная >45 га"
-EXPECTED = {"sites": 80, "anchors": 17, "regular": 16, "not_included": 12}
+EXPECTED = {"sites": 80, "anchors": 18, "regular": 17, "not_included": 12}
 GOLDEN_RANDOM = 30
 GOLDEN_SEED = 20260924
 
@@ -173,7 +173,7 @@ def optimize_cases(sites: dict[str, Site], recommended: dict[str, dict], not_inc
     inputs = [(a, [], "пустой выбор") for a in recommended]
     inputs += [(a, r["additional"][:2], "две из рекомендации") for a, r in list(recommended.items())[:8] if r["additional"]]
     inputs += [("11.2", ["27.3"], "оставлена площадка с IP = 0"), ("20.1", [], "опорная с IP = 1,00"),
-               ("1.2", recommended["1.2"]["additional"] + ["35.3"], "выбрано 4")]
+               ("1.2", ["14.1", "13.2", "12.1", "35.3"], "выбрано 4")]
     for _ in range(6):
         anchor = rng.choice([a for a in recommended if not sites[a].is_large])
         inputs.append((anchor, rng.sample(pool_ids, rng.randint(1, 2)), "случайный выбор"))

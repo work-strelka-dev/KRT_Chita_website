@@ -44,12 +44,14 @@
     <p>
       Площадки КРТ объединяются в&nbsp;многоконтурные комбинации: одна опорная площадка и&nbsp;до&nbsp;четырёх
       присоединённых, суммарно не&nbsp;больше 45&nbsp;га. Комбинация допустима, если её&nbsp;интегральный индекс
-      инвестиционного потенциала (средний по&nbsp;площади индекс всех площадок) строго больше&nbsp;1.
+      инвестиционного потенциала (средний по&nbsp;площади индекс всех площадок) строго больше&nbsp;0.
+      Индекс показан по&nbsp;шкале от&nbsp;−100 до&nbsp;100: 0&nbsp;соответствует исходному значению&nbsp;1,
+      +28&nbsp;— исходному 1,28.
     </p>
     <p>
       Рекомендуемый сценарий&nbsp;— единый набор комбинаций без повторов площадок. Сначала охвачено максимум
       площадок, затем комбинации сделаны компактнее, после чего максимизированы расселение аварийного жилья
-      и&nbsp;новая жилая застройка при минимуме прочего сноса. Площадки больше 45&nbsp;га с&nbsp;индексом выше&nbsp;1
+      и&nbsp;новая жилая застройка при минимуме прочего сноса. Площадки больше 45&nbsp;га с&nbsp;индексом выше&nbsp;0
       реализуются самостоятельно.
     </p>
     <p>
@@ -60,34 +62,43 @@
     <ul class="rules" aria-label="Правила методики">
       <li><strong>≤ 45 га</strong> площадь комбинации</li>
       <li><strong>1–5</strong> площадок, одна опорная</li>
-      <li><strong>IP &gt; 1</strong> индекс инвестиционного потенциала, строго</li>
+      <li><strong>Индекс &gt; 0</strong> инвестиционного потенциала, строго</li>
       <li><strong id="coverage">68 из 80</strong> площадок в сценарии</li>
     </ul>
     </div>
   </dialog>
 
   <main id="app" class="grid">
+    <!-- Три независимые колонки: раскрытие блока в одной не меняет высоту других -->
+    <div class="grid-col grid-col--a">
     <section class="panel area-anchors" aria-labelledby="h-anchors">
       <h2 id="h-anchors" class="panel-title panel-title--list">Выберите опорную площадку</h2>
       <ul id="anchor-list" class="site-list" aria-labelledby="h-anchors"></ul>
     </section>
 
     <section class="panel area-add" aria-labelledby="h-add">
-      <h2 id="h-add" class="panel-title panel-title--list">Добавьте площадки</h2>
-      <div id="add-controls" class="add-controls"></div>
-      <ul id="add-list" class="site-list site-list--scroll" aria-labelledby="h-add"></ul>
+      <h2 id="h-add" class="panel-title panel-title--list">
+        <button id="add-toggle" class="fold-toggle" type="button" aria-expanded="false" aria-controls="add-body">Добавьте площадки</button>
+      </h2>
+      <div id="add-body" class="fold-body" hidden>
+        <div id="add-controls" class="add-controls"></div>
+        <ul id="add-list" class="site-list site-list--scroll" aria-labelledby="h-add"></ul>
+      </div>
     </section>
+    </div>
 
+    <div class="grid-col grid-col--b">
     <section class="panel area-scheme" aria-labelledby="h-scheme">
       <h2 id="h-scheme" class="panel-title">Выбранная опорная площадка</h2>
       <div id="scheme-body" class="scheme-body"></div>
     </section>
 
-    <section id="card-top" class="panel card area-top" aria-labelledby="card-top-title"></section>
-    <section id="card-bottom" class="panel card area-bottom" aria-labelledby="card-bottom-title"></section>
-
     <section class="panel area-legend" aria-labelledby="h-legend">
-      <h2 id="h-legend" class="panel-title">Легенда схем</h2>
+      <h2 id="h-legend" class="panel-title">
+        <button id="legend-toggle" class="fold-toggle" type="button" aria-expanded="false" aria-controls="legend-body">Легенда схем</button>
+      </h2>
+      <div id="legend-body" class="legend-cols fold-body" hidden>
+      <div class="legend-col">
       <h3 class="legend-group">Территории, пригодные для освоения</h3>
       <ul class="legend">
         <li><span class="swatch swatch--free" aria-hidden="true"></span>Свободные участки</li>
@@ -96,6 +107,8 @@
         <li><span class="swatch swatch--social" aria-hidden="true"></span>Участки объектов социальной инфраструктуры</li>
         <li><span class="swatch swatch--kept" aria-hidden="true"></span>Участки сохраняемых существующих ОКС</li>
       </ul>
+      </div>
+      <div class="legend-col">
       <h3 class="legend-group">Территории, не подлежащие освоению</h3>
       <ul class="legend">
         <li><span class="swatch swatch--restricted" aria-hidden="true"></span>Участки с неснимаемыми ограничениями, полностью исключающими возможность строительства</li>
@@ -106,13 +119,17 @@
         <li><abbr class="tile-letter">О</abbr>Обременение</li>
         <li><abbr class="tile-letter">В</abbr>Вознаграждение</li>
       </ul>
+      </div>
+      </div>
     </section>
+    </div>
+
+    <div class="grid-col grid-col--c">
+    <section id="card-top" class="panel card area-top" aria-labelledby="card-top-title"></section>
+    <section id="card-bottom" class="panel card area-bottom" aria-labelledby="card-bottom-title"></section>
+    </div>
   </main>
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
-
-  <footer class="page-foot">
-    <span id="data-version"></span>
-  </footer>
 </body>
 </html>

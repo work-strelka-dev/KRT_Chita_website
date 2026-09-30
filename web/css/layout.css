@@ -17,7 +17,7 @@ body {
 h1, h2, h3, h4, p, ul, dl, dd { margin: 0; }
 ul { padding: 0; list-style: none; }
 
-.site-header, .scenario-bar, .grid, .page-foot { padding-inline: var(--page-gutter); }
+.site-header, .scenario-bar, .grid { padding-inline: var(--page-gutter); }
 
 /* ---------- Шапка ---------- */
 
@@ -69,21 +69,20 @@ ul { padding: 0; list-style: none; }
   padding-block: 16px;
 }
 
-/* ---------- Сетка 3×3 ----------
-   Три равные колонки, три ряда. Списки и схема не раздвигают ряды:
-   их высоту задают плашки, а длинные списки прокручиваются.
-   Нижняя плашка вместе с параметрами сценариев занимает C2:C3. */
+/* ---------- Сетка ----------
+   На широком экране — три независимые колонки (списки | схема и легенда | плашки):
+   раскрытие блока в одной колонке не меняет высоту и масштаб схемы в другой.
+   Уже 1200 px обёртки колонок исчезают (display: contents), и блоки
+   раскладываются по областям сетки. */
 
 .grid {
   display: grid;
   gap: var(--gap);
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  grid-template-rows: auto minmax(0, 1fr) auto;
-  grid-template-areas:
-    "anchors scheme top"
-    "add     scheme bottom"
-    "add     legend bottom";
+  align-items: start;
 }
+
+.grid-col { display: flex; flex-direction: column; gap: var(--gap); min-width: 0; }
 
 .area-anchors { grid-area: anchors; }
 .area-add     { grid-area: add; }
@@ -92,17 +91,12 @@ ul { padding: 0; list-style: none; }
 .area-bottom  { grid-area: bottom; }
 .area-legend  { grid-area: legend; }
 
-.page-foot {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 24px;
-  padding-block: 12px 16px;
-  color: var(--ink-muted);
-  font-size: var(--text-xs);
-}
+.grid { padding-bottom: 16px; }
 
 @media (max-width: 1199px) {
+  .grid-col { display: contents; }
   .grid {
+    align-items: stretch;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
     grid-template-rows: none;
     grid-template-areas:

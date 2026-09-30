@@ -69,27 +69,28 @@ function metrics(s) {
  * @param {Object} p
  * @param {string} p.titleId
  * @param {string} p.title
- * @param {(string | null)[]} [p.notes]  пояснения под заголовком
+ * @param {(string | null)[]} [p.notes]  пояснения в колонках 2–3 шапки
  * @param {Site[]} p.members  опорная первой; пусто — плашка без данных
  * @param {ComboSummary | null} p.summary
  * @param {string} [p.emptyText]  текст в пустой ячейке миниатюр
  * @param {string | null} [p.message]  текст вместо миниатюр
  * @param {Set<string>} [p.newIds]  площадки, добавленные оптимизацией
  * @param {(id: string) => void} [p.onRemove]
- * @param {(HTMLElement | false)[]} [p.actions]  кнопки в правом верхнем углу, рядом с заголовком
+ * @param {(HTMLElement | false)[]} [p.actions]  кнопка в 4-й колонке шапки
  * @param {HTMLElement} [p.footer]  блок под плашкой (параметры сценариев)
  */
 export function comboCard({ titleId, title, notes = [], members, summary, emptyText = '', message = null,
   newIds = new Set(), onRemove, actions = [], footer }) {
   const invalid = summary !== null && !summary.ipValid;
   return [
+    // Шапка по сетке миниатюр: название | пояснения (2 колонки) | кнопка
     el('div', { className: 'card-head' },
       el('h2', { className: 'panel-title', attrs: { id: titleId } }, title),
-      el('div', { className: 'card-actions' }, actions.filter(Boolean))),
-    el('div', { className: 'card-body' },
       el('div', { className: 'card-notes' },
         notes.filter(Boolean).map((n) => el('p', { className: 'card-note' }, n)),
-        invalid && el('p', { className: 'metric-warning' }, 'Не проходит методику: индекс должен быть строго больше 1')),
+        invalid && el('p', { className: 'metric-warning' }, 'Не проходит методику: индекс должен быть строго больше 0')),
+      el('div', { className: 'card-actions' }, actions.filter(Boolean))),
+    el('div', { className: 'card-body' },
       tiles(message ? [] : members.slice(1), newIds, emptyText, message, onRemove),
       metrics(summary)),
     footer,
