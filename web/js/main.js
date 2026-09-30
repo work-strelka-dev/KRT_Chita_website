@@ -229,7 +229,7 @@ function optimizedCard(anchor) {
     return withMessage(`Оптимизировать нечего: опорная ${anchor.id} больше ${MAX_AREA_HA} га и рассматривается самостоятельно.`);
   }
   if (current.status === 'infeasible') {
-    return withMessage(`Подобрать не получилось: с оставленными площадками индекс не поднимается выше 0 в пределах ${MAX_AREA_HA} га. `
+    return withMessage(`Подобрать не получилось: с оставленными площадками индекс не поднимается выше 1 в пределах ${MAX_AREA_HA} га. `
       + 'Уберите площадку с низким индексом и попробуйте снова.');
   }
 
@@ -243,7 +243,7 @@ function optimizedCard(anchor) {
       notes: [
         addedIds.length
           ? `Добавлено по методике: ${addedIds.join(', ')}.`
-          : `Добавить нечего: ни одна площадка не улучшает выбор в пределах ${MAX_AREA_HA} га и индекса больше 0.`,
+          : `Добавить нечего: ни одна площадка не улучшает выбор в пределах ${MAX_AREA_HA} га и индекса больше 1.`,
       ],
       members: optMembers, summary, newIds: new Set(addedIds),
       actions: [applyButton('Перенести в выбранную', addedIds.length ? ids : null, 'apply-opt')],

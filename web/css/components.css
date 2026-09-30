@@ -589,9 +589,6 @@ li:last-child > .site-row { border-bottom: 0; }
 .card--opt .gauge-fill { background: var(--accent-opt); }
 .gauge--bad .gauge-fill { background: var(--danger); }
 
-/* Индекс: заливка от порога 0 в центре */
-.gauge-fill--centered { position: absolute; top: 0; bottom: 0; border-radius: 0; }
-
 /* Отметка порога (индекс = 1) */
 .gauge-marker {
   position: absolute;

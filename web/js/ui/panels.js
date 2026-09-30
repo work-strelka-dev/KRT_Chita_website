@@ -2,7 +2,7 @@
 // Панель схемы опорной (B1:B2) и параметры сценариев в нижней плашке.
 
 import { MAX_ADDITIONAL, MAX_AREA_HA } from '../domain/combo.js';
-import { formatHa, formatIp, formatK0, indexScale, signed } from '../domain/format.js';
+import { formatHa, formatIp, formatK0, signed } from '../domain/format.js';
 import { el } from './dom.js';
 import { siteFigure } from './figure.js';
 
@@ -32,22 +32,16 @@ const fact = (label, value) => el('div', {}, el('dt', {}, label), el('dd', {}, v
 const row = (label, value) => el('div', { className: 'check-row' }, el('dt', {}, label), el('dd', {}, value));
 
 const MAX_SITES = MAX_ADDITIONAL + 1;
-const INDEX_LIMIT = 100; // шкала индекса −100…100, порог 0 — посередине
+const IP_SCALE_MAX = 2; // шкала индекса 0…2, порог 1 — посередине
 
 /** @param {number} share 0…1 */
 const percent = (share) => `${Math.min(100, Math.max(0, share * 100))}%`;
 
-/** Сплошная шкала от левого края. @param {number} share */
-const bar = (share) =>
-  el('span', { className: 'gauge-bar' }, el('span', { className: 'gauge-fill', style: { width: percent(share) } }));
-
-/** Шкала индекса от центра (порог 0): вправо — выше порога, влево — ниже. @param {number | null} ip */
-function indexBar(ip) {
-  const v = ip === null ? 0 : Math.max(-INDEX_LIMIT, Math.min(INDEX_LIMIT, indexScale(ip))) / INDEX_LIMIT;
-  return el('span', { className: 'gauge-bar' },
-    el('span', { className: 'gauge-fill gauge-fill--centered', style: { left: percent(0.5 + Math.min(0, v) / 2), width: percent(Math.abs(v) / 2) } }),
-    el('span', { className: 'gauge-marker', style: { left: '50%' } }));
-}
+/** Сплошная шкала; marker — отметка порога в долях ширины. @param {number} share @param {number} [marker] */
+const bar = (share, marker) =>
+  el('span', { className: 'gauge-bar' },
+    el('span', { className: 'gauge-fill', style: { width: percent(share) } }),
+    marker !== undefined && el('span', { className: 'gauge-marker', style: { left: percent(marker) } }));
 
 /** Шкала из делений: по одному на площадку. @param {number} filled @param {number} total */
 const segments = (filled, total) =>
@@ -77,14 +71,14 @@ function checks(s) {
   if (!s) {
     return el('dl', { className: 'gauges', attrs: { 'aria-label': 'Правила методики' } },
       emptyGauge('Площадь', bar(0)), emptyGauge('Площадок', segments(0, MAX_SITES)),
-      emptyGauge('Индекс', indexBar(null)));
+      emptyGauge('Индекс', bar(0, 1 / IP_SCALE_MAX)));
   }
   return el('dl', { className: 'gauges', attrs: { 'aria-label': 'Правила методики' } },
     gauge('Площадь', bar(s.areaHa / MAX_AREA_HA),
       s.areaFits ? `${formatHa(s.areaHa)} из ${MAX_AREA_HA} га` : `${formatHa(s.areaHa)} га > ${MAX_AREA_HA}`, s.areaFits),
     gauge('Площадок', segments(s.count, MAX_SITES), `${s.count} из ${MAX_SITES}`, s.count <= MAX_SITES),
-    gauge('Индекс', indexBar(s.ip),
-      s.ipValid ? `${formatIp(s.ip)} > 0` : `${formatIp(s.ip)}, нужно > 0`, s.ipValid));
+    gauge('Индекс', bar(s.ip / IP_SCALE_MAX, 1 / IP_SCALE_MAX),
+      s.ipValid ? `${formatIp(s.ip)} > 1` : `${formatIp(s.ip)}, нужно > 1`, s.ipValid));
 }
 
 /**
@@ -96,15 +90,13 @@ function checks(s) {
 
 /**
  * Разница с долей от базы: «+1,2 (+5 %)». База 0 — только разница.
- * У индекса доли нет: шкала с нулём посередине, процент от неё не имеет смысла.
  * @param {Comparison} cmp @param {(x: ComboSummary) => number} pick @param {(v: number) => string} fmt
- * @param {boolean} [share]
  */
-function diff({ base, target }, pick, fmt, share = true) {
+function diff({ base, target }, pick, fmt) {
   if (!base || !target) return '—';
   const d = pick(target) - pick(base);
   const b = pick(base);
-  return share && b ? `${fmt(d)} (${signed.pct(d / b)})` : fmt(d);
+  return b ? `${fmt(d)} (${signed.pct(d / b)})` : fmt(d);
 }
 
 /**
@@ -126,7 +118,7 @@ export function scenarioParams(s, cmp, fold) {
     el('div', { className: 'params-body', attrs: { id: 'params-body', hidden: !fold.open } }, checks(s),
       el('h4', { className: 'panel-subtitle' }, cmp.title),
       el('dl', { className: 'check-list check-list--numbers' },
-        row('Индекс инвестиционного потенциала', diff(cmp, (x) => x.ip, signed.ip, false)),
+        row('Индекс инвестиционного потенциала', diff(cmp, (x) => x.ip, signed.ip)),
         row('Площадь, га', diff(cmp, (x) => x.areaHa, signed.ha)),
         row('Градпотенциал, тыс. м²', diff(cmp, (x) => x.gradM2, signed.k0)),
         row('Аварийное жильё, тыс. м²', diff(cmp, (x) => x.avarM2, signed.k1)))));

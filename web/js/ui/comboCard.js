@@ -88,7 +88,7 @@ export function comboCard({ titleId, title, notes = [], members, summary, emptyT
       el('h2', { className: 'panel-title', attrs: { id: titleId } }, title),
       el('div', { className: 'card-notes' },
         notes.filter(Boolean).map((n) => el('p', { className: 'card-note' }, n)),
-        invalid && el('p', { className: 'metric-warning' }, 'Не проходит методику: индекс должен быть строго больше 0')),
+        invalid && el('p', { className: 'metric-warning' }, 'Не проходит методику: индекс должен быть строго больше 1')),
       el('div', { className: 'card-actions' }, actions.filter(Boolean))),
     el('div', { className: 'card-body' },
       tiles(message ? [] : members.slice(1), newIds, emptyText, message, onRemove),
